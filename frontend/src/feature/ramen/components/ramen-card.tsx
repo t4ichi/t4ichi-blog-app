@@ -1,26 +1,17 @@
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ExternalLink, Instagram, Map } from "lucide-react";
-import type { RamenShop } from "../types/ramen-shop";
+import type { Ramen } from "../types/ramen";
 
-interface RamenCardProps {
-  shop: RamenShop;
-}
+type RamenCardProps = {
+  ramen: Ramen;
+};
 
-export function RamenCard({ shop }: RamenCardProps) {
-  const {
-    name,
-    visitDate,
-    imageUrl,
-    googleMapsUrl,
-    instagramUrl,
-    taberoguUrl,
-    notes,
-    tags,
-  } = shop;
+export function RamenCard({ ramen }: RamenCardProps) {
+  const { name, visitDate, images, googleMapLink, tabelogLink, note } = ramen;
 
-  const formatDate = (dateString: string) => {
+  const formatDate = (dateString: string | null) => {
+    if (!dateString) return "";
     const date = new Date(dateString);
     return date.toLocaleDateString("ja-JP", {
       year: "numeric",
@@ -33,7 +24,7 @@ export function RamenCard({ shop }: RamenCardProps) {
     <Card className="overflow-hidden h-full relative group">
       <div className="absolute inset-0 w-full h-full">
         <img
-          src={imageUrl || "/placeholder.svg"}
+          src={images?.[0]?.url || "/placeholder.svg"}
           alt=""
           className="object-cover transition-transform duration-300 group-hover:scale-105 w-full h-full"
         />
@@ -46,24 +37,10 @@ export function RamenCard({ shop }: RamenCardProps) {
           <p className="text-sm text-white/80 mb-2">{formatDate(visitDate)}</p>
         )}
 
-        <p className="text-sm mb-3 line-clamp-2">{notes}</p>
-
-        {tags && tags.length > 0 && (
-          <div className="flex flex-wrap gap-1.5 mb-3">
-            {tags.map((tag) => (
-              <Badge
-                key={tag}
-                variant="secondary"
-                className="bg-white/20 hover:bg-white/30 text-white"
-              >
-                {tag}
-              </Badge>
-            ))}
-          </div>
-        )}
+        <p className="text-sm mb-3 line-clamp-2">{note}</p>
 
         <div className="flex gap-2 mt-auto">
-          {googleMapsUrl && (
+          {googleMapLink && (
             <Button
               variant="outline"
               size="icon"
@@ -71,7 +48,7 @@ export function RamenCard({ shop }: RamenCardProps) {
               asChild
             >
               <a
-                href={googleMapsUrl}
+                href={googleMapLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Google Maps"
@@ -81,7 +58,7 @@ export function RamenCard({ shop }: RamenCardProps) {
             </Button>
           )}
 
-          {instagramUrl && (
+          {tabelogLink && (
             <Button
               variant="outline"
               size="icon"
@@ -89,25 +66,7 @@ export function RamenCard({ shop }: RamenCardProps) {
               asChild
             >
               <a
-                href={instagramUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Instagram"
-              >
-                <Instagram className="h-4 w-4" />
-              </a>
-            </Button>
-          )}
-
-          {taberoguUrl && (
-            <Button
-              variant="outline"
-              size="icon"
-              className="bg-black/30 border-white/30 text-white hover:bg-white hover:text-foreground transition-colors"
-              asChild
-            >
-              <a
-                href={taberoguUrl}
+                href={tabelogLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 title="食べログ"

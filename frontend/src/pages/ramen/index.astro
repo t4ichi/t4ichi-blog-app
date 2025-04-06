@@ -1,12 +1,19 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { RamenList } from "@/feature/ramen/components/ramen-list";
-import { RAMEN_SHOPS } from "@/feature/ramen/data/ramen-data";
+import fetchApi from "@/lib/strapi";
+import type { Ramen } from "@/feature/ramen/types/ramen";
+
+const items = await fetchApi<Ramen[]>({
+  endpoint: "ramens?populate=images",
+  wrappedByKey: "data",
+});
 ---
 
 <Layout>
   <main class="container mx-auto py-8 px-4">
     <h1 class="grid justify-center my-8 text-6xl">🍜</h1>
-    <RamenList shops={RAMEN_SHOPS} />
+
+    <RamenList items={items} />
   </main>
 </Layout>
