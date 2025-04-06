@@ -23,8 +23,11 @@ export default async function fetchApi<T>({
     endpoint = endpoint.slice(1);
   }
 
-  const url = new URL(`${import.meta.env.STRAPI_URL}/api/${endpoint}`);
-  console.log("fetching", url.toString());
+  // const url = new URL(`${import.meta.env.STRAPI_URL}/api/${endpoint}`);
+
+  const url = new URL(
+    `https://brave-bouquet-c1aa03a9de.strapiapp.com/api/${endpoint}`,
+  );
 
   if (query) {
     Object.entries(query).forEach(([key, value]) => {
