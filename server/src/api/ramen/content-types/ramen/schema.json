@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ramens",
+  "info": {
+    "singularName": "ramen",
+    "pluralName": "ramens",
+    "displayName": "ramen",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "visitDate": {
+      "type": "date"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "googleMapLink": {
+      "type": "string"
+    },
+    "tabelogLink": {
+      "type": "string"
+    },
+    "note": {
+      "type": "text"
+    }
+  }
+}
