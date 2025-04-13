@@ -5,7 +5,7 @@ import fetchApi from "@/lib/strapi";
 import type { Ramen } from "@/feature/ramen/types/ramen";
 
 const items = await fetchApi<Ramen[]>({
-  endpoint: "ramens?populate=images",
+  endpoint: "ramens?populate=images&sort=visitDate:desc",
   wrappedByKey: "data",
 });
 ---
