@@ -13,16 +13,47 @@ const dirname =
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
   test: {
-    workspace: [
+    coverage: {
+      enabled: true,
+      provider: "v8",
+      reporter: ["text", "json", "html"],
+      reportsDirectory: "./coverage",
+      include: [
+        "src/components/**/*.{ts,tsx}",
+        "src/utils/cn/**/*.{ts,tsx}",
+        "src/types/**/*.{ts,tsx}",
+        "src/schemas/**/*.{ts,tsx}",
+        "src/features/**/*.{ts,tsx}",
+      ],
+      exclude: [
+        "**/node_modules/**",
+        "src/**/*.test.{ts,tsx}",
+        "src/**/*.stories.{ts,tsx}",
+        "src/**/index.ts",
+        "src/lib/**",
+        "src/app/**",
+        "**/*.config.*",
+        "coverage/**",
+      ],
+      clean: true,
+      all: false,
+      thresholds: {
+        lines: 80,
+        functions: 80,
+        branches: 80,
+        statements: 80,
+      },
+    },
+    projects: [
       // ユニットテスト
-      // {
-      //   plugins: [tsconfigPaths(), react()],
-      //   test: {
-      //     name: "unit",
-      //     include: ["src/**/*.test.@(ts|tsx)"],
-      //     environment: "jsdom",
-      //   },
-      // },
+      {
+        plugins: [tsconfigPaths(), react()],
+        test: {
+          name: "unit",
+          include: ["src/**/*.test.@(ts|tsx)"],
+          environment: "jsdom",
+        },
+      },
       // Storybook
       {
         extends: true,
