@@ -7,7 +7,13 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "ignore": ["**/node_modules/**", "**/.next/**", "**/public/**"]
+    "ignore": [
+      "**/node_modules/**",
+      "**/.next/**",
+      "**/public/**",
+      "**/src/lib/orval/fetchers/**",
+      "**/src/lib/orval/schemas/**"
+    ]
   },
   "formatter": {
     "enabled": true,
