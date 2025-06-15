@@ -17,16 +17,21 @@ const getBody = <T>(c: Response | Request): Promise<T> => {
 
 // NOTE: Update just base url
 const getUrl = (contextUrl: string): string => {
-  const url = new URL(contextUrl);
-  const pathname = url.pathname;
-  const search = url.search;
-  
   // MicroCMSのAPIベースURL
   const baseUrl = `https://${env.MICROCMS_SERVICE_DOMAIN}.microcms.io/api/v1`;
 
-  const requestUrl = new URL(`${baseUrl}${pathname}${search}`);
+  // contextUrlが相対パスの場合はそのまま使用、絶対URLの場合はパスのみ抽出
+  if (contextUrl.startsWith("/")) {
+    return `${baseUrl}${contextUrl}`;
+  }
 
-  return requestUrl.toString();
+  try {
+    const url = new URL(contextUrl);
+    return `${baseUrl}${url.pathname}${url.search}`;
+  } catch {
+    // URLのパースに失敗した場合は相対パスとして扱う
+    return `${baseUrl}/${contextUrl}`;
+  }
 };
 
 // NOTE: Add headers
@@ -51,7 +56,12 @@ export const customFetch = async <T>(
   };
 
   const response = await fetch(requestUrl, requestInit);
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
   const data = await getBody<T>(response);
 
-  return { status: response.status, data, headers: response.headers } as T;
+  return data;
 };
