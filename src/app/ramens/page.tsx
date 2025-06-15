@@ -7,6 +7,13 @@ import { getRamens } from "@/features/ramen/fetchers";
 import SteamingBowlColor from "@/icons/steaming_bowl_color.svg";
 import { z } from "zod";
 
+// Cloudflare Pages用のEdge Runtime設定
+export const runtime = 'edge';
+
+// Edge Runtime対応設定
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 const searchParamsSchema = z.object({
   q: z.string().optional().catch(undefined), // 検索キーワード
   tags: z.string().optional().catch(undefined), // タグID（カンマ区切り文字列）
