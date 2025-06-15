@@ -14,7 +14,17 @@ export const ramenTagSchema = z.object({
   publishedAt: z.string(),
   revisedAt: z.string(),
   name: z.string(),
-  category: z.array(z.enum(['type', 'area', 'feature', 'taste', 'price', 'atmosphere', 'service'])),
+  category: z.array(
+    z.enum([
+      "type",
+      "area",
+      "feature",
+      "taste",
+      "price",
+      "atmosphere",
+      "service",
+    ]),
+  ),
   description: z.string().nullish(),
 });
 

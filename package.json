@@ -33,6 +33,7 @@
     "@biomejs/biome": "1.9.4",
     "@chromatic-com/storybook": "^4.0.0",
     "@storybook/addon-a11y": "^9.0.9",
+    "@storybook/addon-actions": "^9.0.8",
     "@storybook/addon-docs": "^9.0.9",
     "@storybook/addon-vitest": "^9.0.9",
     "@storybook/nextjs-vite": "9.0.9",
