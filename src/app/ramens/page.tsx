@@ -1,3 +1,4 @@
+import { Pagination } from "@/components/pagination";
 import { RamenTagSelector } from "@/features/ramen-tag/components/ramen-tag-selector";
 import { getRamenTags } from "@/features/ramen-tag/fetchers";
 import { RamenList } from "@/features/ramen/components/ramen-list";
@@ -30,15 +31,24 @@ export default async function RamensPage({ searchParams }: RamensPageProps) {
     searchFilters.push(`tags[contains]${tagIds.join(",")}`);
   }
 
+  // ページネーション用の設定
+  const limit = 12; // 1ページあたりの表示件数
+  const offset = (page - 1) * limit;
+
   const [ramenResult, tagsResult] = await Promise.all([
     getRamens({
-      limit: 30,
+      limit,
+      offset,
       orders: "-visitDate",
       ...(q && { q }), // 検索キーワード
       ...(searchFilters.length > 0 && { filters: searchFilters.join("[and]") }), // フィルター条件
     }),
     getRamenTags({ limit: 100 }),
   ]);
+
+  // ページネーション情報の計算
+  const totalCount = ramenResult.ok ? ramenResult.value.totalCount : 0;
+  const totalPages = Math.ceil(totalCount / limit);
 
   // エラーハンドリング
   if (!ramenResult.ok) {
@@ -105,6 +115,15 @@ export default async function RamensPage({ searchParams }: RamensPageProps) {
           )}
 
           <RamenList ramens={ramenResult.value.contents} />
+
+          {/* ページネーション */}
+          <Pagination
+            currentPage={page}
+            totalPages={totalPages}
+            totalCount={totalCount}
+            limit={limit}
+            className="mt-12"
+          />
         </main>
       </div>
     </div>
