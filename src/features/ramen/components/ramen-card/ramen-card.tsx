@@ -31,9 +31,9 @@ export const RamenCard: React.FC<RamenCardProps> = ({ ramen }) => {
   const formattedPrice = formatPrice(ramen.price);
 
   return (
-    <article className="bg-white border border-gray-100 rounded-lg overflow-hidden hover:border-gray-200 hover:shadow-sm transition-all duration-200 group">
+    <article className="bg-white border border-gray-100 rounded-lg overflow-hidden hover:border-gray-200 hover:shadow-sm transition-all duration-200 group flex flex-col h-full">
       {ramen.images?.[0] && (
-        <div className="aspect-[4/3] w-full overflow-hidden bg-gray-50">
+        <div className="aspect-[4/3] w-full overflow-hidden bg-gray-50 flex-shrink-0">
           <img
             src={`${ramen.images[0].url}?fit=crop&w=400&h=300`}
             alt={ramen.title}
@@ -42,20 +42,23 @@ export const RamenCard: React.FC<RamenCardProps> = ({ ramen }) => {
         </div>
       )}
 
-      <div className="p-6">
+      <div className="p-6 flex flex-col flex-1">
         <header className="mb-4">
           <h3 className="font-semibold text-xl mb-3 leading-tight text-gray-900 line-clamp-2">
             {ramen.title}
           </h3>
 
-          {ramen.description && (
-            <p className="text-gray-600 leading-relaxed text-sm line-clamp-3">
-              {ramen.description}
-            </p>
-          )}
+          {/* 説明文用の固定高さエリア */}
+          <div className="min-h-[60px]">
+            {ramen.description && (
+              <p className="text-gray-600 leading-relaxed text-sm line-clamp-3">
+                {ramen.description}
+              </p>
+            )}
+          </div>
         </header>
 
-        <div className="space-y-3 mb-6">
+        <div className="space-y-3 mb-6 flex-1">
           {visitDate && (
             <div className="flex items-center text-sm text-gray-500">
               <time className="font-medium">{visitDate}</time>
@@ -95,7 +98,7 @@ export const RamenCard: React.FC<RamenCardProps> = ({ ramen }) => {
         )}
 
         {(ramen.googleMapUrl || ramen.tabelogUrl) && (
-          <footer className="flex gap-2 pt-4 border-t border-gray-50">
+          <footer className="flex gap-2 pt-4 border-t border-gray-50 mt-auto">
             {ramen.googleMapUrl && (
               <a
                 href={ramen.googleMapUrl}
