@@ -4,13 +4,8 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   
-  // Cloudflare Pages対応
-  experimental: {
-    // runtime: 'experimental-edge', // 必要に応じてコメントアウト
-  },
-  
-  // Cloudflare Pages用の出力設定
-  // output: 'standalone', // @cloudflare/next-on-pagesで自動設定されるためコメントアウト
+  // OpenNext Cloudflare対応
+  output: 'standalone',
   
   webpack(config) {
     // パスエイリアスを追加

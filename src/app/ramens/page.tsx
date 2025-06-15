@@ -7,10 +7,10 @@ import { getRamens } from "@/features/ramen/fetchers";
 import SteamingBowlColor from "@/icons/steaming_bowl_color.svg";
 import { z } from "zod";
 
-// Cloudflare Pages用のEdge Runtime設定
-export const runtime = 'edge';
+// OpenNext Cloudflare対応: Node.js runtimeを使用
+// export const runtime = 'edge'; // Edge Runtimeは使用しない
 
-// Edge Runtime対応設定
+// 動的ページ設定
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
