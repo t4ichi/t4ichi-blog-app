@@ -5,7 +5,7 @@ import SteamingBowlColor from "@/icons/steaming_bowl_color.svg";
 export default async function RamensPage() {
   const result = await getRamens({
     limit: 30,
-    orders: "-createdAt",
+    orders: "-visitDate",
   });
 
   if (!result.ok) {

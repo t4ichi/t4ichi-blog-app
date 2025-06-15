@@ -35,7 +35,7 @@ export const RamenCard: React.FC<RamenCardProps> = ({ ramen }) => {
       {ramen.images?.[0] && (
         <div className="aspect-[4/3] w-full overflow-hidden bg-gray-50">
           <img
-            src={ramen.images[0].url}
+            src={`${ramen.images[0].url}?fit=crop&w=400&h=300`}
             alt={ramen.title}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           />
