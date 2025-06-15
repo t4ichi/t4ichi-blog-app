@@ -6,7 +6,7 @@
  * OpenAPI spec version: 1.0.0
  */
 import type { MediaItem } from './mediaItem';
-import type { RamenTagsItem } from './ramenTagsItem';
+import type { RamenTag } from './ramenTag';
 
 export interface Ramen {
   /** ラーメンID */
@@ -37,10 +37,10 @@ export interface Ramen {
    */
   visitDate?: string | null;
   /**
-   * タグ
+   * ラーメンタグ
    * @nullable
    */
-  tags?: RamenTagsItem[] | null;
+  tags?: RamenTag[] | null;
   /**
    * GoogleMapのURL
    * @nullable

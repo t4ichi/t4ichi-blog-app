@@ -47,7 +47,16 @@ export const orvalGetRamensResponse = zod.object({
   "width": zod.number().describe('画像の幅')
 })).nullish().describe('画像リスト'),
   "visitDate": zod.string().datetime({}).nullish().describe('来店日'),
-  "tags": zod.array(zod.enum(['ラーメン', '油そば', 'つけ麺', '家系', 'パスタ', '二郎系', '担々麺', '味噌', '醤油', '塩', '豚骨'])).nullish().describe('タグ'),
+  "tags": zod.array(zod.object({
+  "id": zod.string().describe('タグID'),
+  "createdAt": zod.string().datetime({}).describe('作成日時'),
+  "updatedAt": zod.string().datetime({}).describe('更新日時'),
+  "publishedAt": zod.string().datetime({}).describe('公開日時'),
+  "revisedAt": zod.string().datetime({}).describe('改訂日時'),
+  "name": zod.string().describe('タグ名'),
+  "category": zod.array(zod.enum(['type', 'area', 'feature', 'taste', 'price', 'atmosphere', 'service'])).describe('タグカテゴリ（配列形式）'),
+  "description": zod.string().nullish().describe('タグの説明')
+})).nullish().describe('ラーメンタグ'),
   "googleMapUrl": zod.string().nullish().describe('GoogleMapのURL'),
   "tabelogUrl": zod.string().nullish().describe('食べログのURL'),
   "rating": zod.number().min(1).max(orvalGetRamensResponseContentsItemRatingMax).nullish().describe('評価（1-5）'),
@@ -86,7 +95,16 @@ export const orvalGetRamenByIdResponse = zod.object({
   "width": zod.number().describe('画像の幅')
 })).nullish().describe('画像リスト'),
   "visitDate": zod.string().datetime({}).nullish().describe('来店日'),
-  "tags": zod.array(zod.enum(['ラーメン', '油そば', 'つけ麺', '家系', 'パスタ', '二郎系', '担々麺', '味噌', '醤油', '塩', '豚骨'])).nullish().describe('タグ'),
+  "tags": zod.array(zod.object({
+  "id": zod.string().describe('タグID'),
+  "createdAt": zod.string().datetime({}).describe('作成日時'),
+  "updatedAt": zod.string().datetime({}).describe('更新日時'),
+  "publishedAt": zod.string().datetime({}).describe('公開日時'),
+  "revisedAt": zod.string().datetime({}).describe('改訂日時'),
+  "name": zod.string().describe('タグ名'),
+  "category": zod.array(zod.enum(['type', 'area', 'feature', 'taste', 'price', 'atmosphere', 'service'])).describe('タグカテゴリ（配列形式）'),
+  "description": zod.string().nullish().describe('タグの説明')
+})).nullish().describe('ラーメンタグ'),
   "googleMapUrl": zod.string().nullish().describe('GoogleMapのURL'),
   "tabelogUrl": zod.string().nullish().describe('食べログのURL'),
   "rating": zod.number().min(1).max(orvalGetRamenByIdResponseRatingMax).nullish().describe('評価（1-5）'),

@@ -70,9 +70,7 @@ export const RamenCard: React.FC<RamenCardProps> = ({ ramen }) => {
               >
                 {ratingStars}
               </span>
-              <span className="text-xs text-gray-500">
-                ({ramen.rating})
-              </span>
+              <span className="text-xs text-gray-500">({ramen.rating})</span>
             </div>
           )}
 
@@ -87,10 +85,10 @@ export const RamenCard: React.FC<RamenCardProps> = ({ ramen }) => {
           <div className="flex flex-wrap gap-2 mb-6">
             {ramen.tags.map((tag) => (
               <span
-                key={tag}
+                key={tag.id}
                 className="px-3 py-1 bg-gray-50 text-gray-700 text-xs font-medium rounded-full border border-gray-100"
               >
-                {tag}
+                {tag.name}
               </span>
             ))}
           </div>

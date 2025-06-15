@@ -6,19 +6,17 @@ import {
 } from "@/lib/orval/schemas/ramens/ramens.zod";
 import { z } from "zod";
 
-export const ramenTagSchema = z.enum([
-  "ラーメン",
-  "油そば",
-  "つけ麺",
-  "家系",
-  "パスタ",
-  "二郎系",
-  "担々麺",
-  "味噌",
-  "醤油",
-  "塩",
-  "豚骨",
-]);
+// タグスキーマは生成された型から抽出
+export const ramenTagSchema = z.object({
+  id: z.string(),
+  createdAt: z.string(),
+  updatedAt: z.string(),
+  publishedAt: z.string(),
+  revisedAt: z.string(),
+  name: z.string(),
+  category: z.array(z.enum(['type', 'area', 'feature', 'taste', 'price', 'atmosphere', 'service'])),
+  description: z.string().nullish(),
+});
 
 export const ramenImageSchema = z.object({
   url: z.string(),

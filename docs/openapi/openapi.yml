@@ -11,6 +11,89 @@ security:
   - ApiKeyAuth: []
 
 paths:
+  /ramen-tags:
+    get:
+      summary: ラーメンタグ一覧を取得
+      tags:
+        - ramen-tags
+      operationId: getRamenTags
+      parameters:
+        - name: limit
+          in: query
+          description: 取得件数の上限
+          schema:
+            type: integer
+            default: 10
+            minimum: 1
+            maximum: 100
+        - name: offset
+          in: query
+          description: 取得開始位置
+          schema:
+            type: integer
+            default: 0
+            minimum: 0
+        - name: orders
+          in: query
+          description: ソート順
+          schema:
+            type: string
+            example: "-createdAt"
+        - name: q
+          in: query
+          description: 検索クエリ
+          schema:
+            type: string
+        - name: fields
+          in: query
+          description: 取得するフィールドを指定
+          schema:
+            type: string
+            example: "name,category"
+        - name: filters
+          in: query
+          description: フィルター条件
+          schema:
+            type: string
+            example: "category[equals]type"
+      responses:
+        '200':
+          description: ラーメンタグ一覧の取得に成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RamenTagListResponse'
+        '400':
+          description: リクエストパラメータが不正
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: 認証エラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: 指定されたAPIが見つからない
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: リクエスト制限に達している
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: サーバーエラー
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
   /ramens:
     get:
       summary: ラーメン一覧を取得
@@ -226,6 +309,8 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 
 tags:
+  - name: ramen-tags
+    description: ラーメンタグ関連のAPI
   - name: ramens
     description: ラーメン関連のAPI
 
@@ -314,20 +399,8 @@ components:
           type: array
           nullable: true
           items:
-            type: string
-            enum:
-              - ラーメン
-              - 油そば
-              - つけ麺
-              - 家系
-              - パスタ
-              - 二郎系
-              - 担々麺
-              - 味噌
-              - 醤油
-              - 塩
-              - 豚骨
-          description: タグ
+            $ref: '#/components/schemas/RamenTag'
+          description: ラーメンタグ
         googleMapUrl:
           type: string
           nullable: true
@@ -353,6 +426,79 @@ components:
         - publishedAt
         - revisedAt
         - title
+
+    RamenTagListResponse:
+      type: object
+      properties:
+        contents:
+          type: array
+          items:
+            $ref: '#/components/schemas/RamenTag'
+        totalCount:
+          type: integer
+          description: 総件数
+        offset:
+          type: integer
+          description: 取得開始位置
+        limit:
+          type: integer
+          description: 取得件数の上限
+      required:
+        - contents
+        - totalCount
+        - offset
+        - limit
+
+    RamenTag:
+      type: object
+      properties:
+        id:
+          type: string
+          description: タグID
+        createdAt:
+          type: string
+          format: date-time
+          description: 作成日時
+        updatedAt:
+          type: string
+          format: date-time
+          description: 更新日時
+        publishedAt:
+          type: string
+          format: date-time
+          description: 公開日時
+        revisedAt:
+          type: string
+          format: date-time
+          description: 改訂日時
+        name:
+          type: string
+          description: タグ名
+        category:
+          type: array
+          items:
+            type: string
+            enum:
+              - type
+              - area
+              - feature
+              - taste
+              - price
+              - atmosphere
+              - service
+          description: タグカテゴリ（配列形式）
+        description:
+          type: string
+          nullable: true
+          description: タグの説明
+      required:
+        - id
+        - createdAt
+        - updatedAt
+        - publishedAt
+        - revisedAt
+        - name
+        - category
 
     MediaItem:
       type: object
