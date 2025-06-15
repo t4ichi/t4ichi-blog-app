@@ -11,6 +11,7 @@
       "**/node_modules/**",
       "**/.next/**",
       "**/public/**",
+      "**/coverage/**",
       "**/src/lib/orval/fetchers/**",
       "**/src/lib/orval/schemas/**"
     ]
