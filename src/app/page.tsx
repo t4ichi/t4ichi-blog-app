@@ -1,5 +1,5 @@
 import { getRamens } from "@/features/ramen/fetchers";
-import SteamingBowlColor from "../../public/steaming_bowl_color.svg";
+import SteamingBowlColor from "@/icons/steaming_bowl_color.svg";
 
 export default async function Home() {
   const result = await getRamens();

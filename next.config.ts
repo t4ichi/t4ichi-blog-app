@@ -1,8 +1,14 @@
 import type { NextConfig } from "next";
+import path from "path";
 
 const nextConfig: NextConfig = {
   /* config options here */
   webpack(config) {
+    // パスエイリアスを追加
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "@/icons": path.resolve(process.cwd(), "public/icons"),
+    };
     // Grab the existing rule that handles SVG imports
     // @ts-expect-error
     const fileLoaderRule = config.module.rules.find((rule) =>

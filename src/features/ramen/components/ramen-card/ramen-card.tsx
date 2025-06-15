@@ -1,5 +1,5 @@
-import MapPinIcon from "../../../../../public/round_pushpin_color.svg";
-import TabelogIcon from "../../../../../public/tabelog.svg";
+import MapPinIcon from "@/icons/round_pushpin_color.svg";
+import TabelogIcon from "@/icons/tabelog.svg";
 import type { Ramen } from "../../types";
 
 export type RamenCardProps = {

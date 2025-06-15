@@ -1,6 +1,6 @@
 import { RamenList } from "@/features/ramen/components/ramen-list";
 import { getRamens } from "@/features/ramen/fetchers";
-import SteamingBowlColor from "../../../public/steaming_bowl_color.svg";
+import SteamingBowlColor from "@/icons/steaming_bowl_color.svg";
 
 export default async function RamensPage() {
   const result = await getRamens({
