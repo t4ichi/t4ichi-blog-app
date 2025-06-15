@@ -30,11 +30,3 @@ export const ramenListResponseSchema = orvalGetRamensResponse;
 export const ramenSchema = orvalGetRamenByIdResponse;
 export const getRamensParamsSchema = orvalGetRamensQueryParams;
 export const getRamenByIdParamsSchema = orvalGetRamenByIdQueryParams;
-
-// 型定義
-export type RamenTag = z.infer<typeof ramenTagSchema>;
-export type RamenImage = z.infer<typeof ramenImageSchema>;
-export type RamenListResponse = z.infer<typeof ramenListResponseSchema>;
-export type Ramen = z.infer<typeof ramenSchema>;
-export type GetRamensParams = z.infer<typeof getRamensParamsSchema>;
-export type GetRamenByIdParams = z.infer<typeof getRamenByIdParamsSchema>;

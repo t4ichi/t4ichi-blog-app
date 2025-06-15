@@ -16,7 +16,7 @@ import type {
   GetRamensParams,
   Ramen,
   RamenListResponse,
-} from "./schemas";
+} from "./types";
 
 /**
  * ラーメン一覧を取得
