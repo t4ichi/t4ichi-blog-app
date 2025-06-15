@@ -1,3 +1,5 @@
+import { env } from "@/config/env";
+
 // NOTE: Supports cases where `content-type` is other than `json`
 const getBody = <T>(c: Response | Request): Promise<T> => {
   const contentType = c.headers.get("content-type");
@@ -18,10 +20,9 @@ const getUrl = (contextUrl: string): string => {
   const url = new URL(contextUrl);
   const pathname = url.pathname;
   const search = url.search;
-  const baseUrl =
-    process.env.NODE_ENV === "production"
-      ? "productionBaseUrl"
-      : "http://localhost:3000";
+  
+  // MicroCMSのAPIベースURL
+  const baseUrl = `https://${env.MICROCMS_SERVICE_DOMAIN}.microcms.io/api/v1`;
 
   const requestUrl = new URL(`${baseUrl}${pathname}${search}`);
 
@@ -32,8 +33,8 @@ const getUrl = (contextUrl: string): string => {
 const getHeaders = (headers?: HeadersInit): HeadersInit => {
   return {
     ...headers,
-    Authorization: "token",
-    "Content-Type": "multipart/form-data",
+    "X-MICROCMS-API-KEY": env.MICROCMS_API_KEY,
+    "Content-Type": "application/json",
   };
 };
 
