@@ -40,7 +40,6 @@ export const Pagination: React.FC<PaginationProps> = ({
   // ページ数が1以下の場合は表示しない
   if (totalPages <= 1) return null;
 
-
   // 表示するページ番号の範囲を計算
   const getVisiblePages = () => {
     const delta = 2; // 現在のページの前後に表示するページ数

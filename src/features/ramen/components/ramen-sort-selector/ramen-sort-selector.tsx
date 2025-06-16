@@ -16,7 +16,7 @@ export const RamenSortSelector: React.FC = () => {
     } else {
       newParams.set("sort", newSort);
     }
-    
+
     // ソート順を変更した時はページ番号をリセット
     newParams.delete("page");
 

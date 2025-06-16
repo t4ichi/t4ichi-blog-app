@@ -7,7 +7,13 @@ export const metadata: Metadata = {
   title: "taichi no heya",
   description: "Personal website of Ito Taichi. Web developer.",
   authors: [{ name: "Ito Taichi" }],
-  keywords: ["Ito Taichi", "Web Developer", "Ramen", "個人サイト", "taichi no heya"],
+  keywords: [
+    "Ito Taichi",
+    "Web Developer",
+    "Ramen",
+    "個人サイト",
+    "taichi no heya",
+  ],
   openGraph: {
     title: "taichi no heya",
     description: "Personal website of Ito Taichi. Web developer.",
@@ -39,6 +45,7 @@ export default function RootLayout({
         <Script
           id="gtm-script"
           strategy="beforeInteractive"
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: Google Tag Manager requires inline script
           dangerouslySetInnerHTML={{
             __html: `
               (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -58,9 +65,10 @@ export default function RootLayout({
             height="0"
             width="0"
             style={{ display: "none", visibility: "hidden" }}
+            title="Google Tag Manager"
           />
         </noscript>
-        
+
         {children}
         <SiteFooter />
       </body>

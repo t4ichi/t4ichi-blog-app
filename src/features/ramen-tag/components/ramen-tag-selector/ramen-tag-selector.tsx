@@ -37,9 +37,11 @@ export const RamenTagSelector: React.FC<RamenTagSelectorProps> = ({
   );
 
   // 各カテゴリ内でタグを参照数順にソート
-  Object.keys(groupedTags).forEach((category) => {
-    groupedTags[category] = groupedTags[category].sort((a, b) => b.count - a.count);
-  });
+  for (const category of Object.keys(groupedTags)) {
+    groupedTags[category] = groupedTags[category].sort(
+      (a, b) => b.count - a.count,
+    );
+  }
 
   const categoryLabels: Record<string, string> = {
     type: "種類",
@@ -112,14 +114,16 @@ export const RamenTagSelector: React.FC<RamenTagSelectorProps> = ({
               `}
             >
               <span>{categoryLabels[category] || category}</span>
-              <span className={`
+              <span
+                className={`
                 ml-2 px-2 py-0.5 text-xs rounded-full font-medium
                 ${
                   isActive
                     ? "bg-white/20 text-white"
                     : "bg-gray-200 text-gray-600"
                 }
-              `}>
+              `}
+              >
                 {tagCount}
               </span>
             </button>
@@ -174,14 +178,16 @@ export const RamenTagSelector: React.FC<RamenTagSelectorProps> = ({
                 >
                   <span>{tag.name}</span>
                   {tag.count > 0 && (
-                    <span className={`
+                    <span
+                      className={`
                       ml-2 px-2 py-0.5 text-xs rounded-full font-medium
                       ${
                         isSelected
                           ? "bg-white/20 text-white"
                           : "bg-gray-100 text-gray-600"
                       }
-                    `}>
+                    `}
+                    >
                       {tag.count}
                     </span>
                   )}

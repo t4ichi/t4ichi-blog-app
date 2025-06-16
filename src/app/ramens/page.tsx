@@ -139,10 +139,7 @@ export default async function RamensPage({ searchParams }: RamensPageProps) {
           {/* 検索フォーム */}
           <div className="space-y-6 mb-8">
             <RamenSearchForm defaultValue={q || ""} />
-            <RamenTagSelector
-              tags={tagsResult.value}
-              selectedTagIds={tagIds}
-            />
+            <RamenTagSelector tags={tagsResult.value} selectedTagIds={tagIds} />
             <div className="flex justify-end">
               <RamenSortSelector />
             </div>
