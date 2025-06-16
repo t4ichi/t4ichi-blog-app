@@ -31,61 +31,69 @@ export const RamenCard: React.FC<RamenCardProps> = ({ ramen }) => {
   const formattedPrice = formatPrice(ramen.price);
 
   return (
-    <article className="bg-white border border-gray-100 rounded-lg overflow-hidden hover:border-gray-200 hover:shadow-sm transition-all duration-200 group flex flex-col h-full">
-      {ramen.images?.[0] && (
-        <div className="aspect-[4/3] w-full overflow-hidden bg-gray-50 flex-shrink-0">
-          <img
-            src={`${ramen.images[0].url}?fit=crop&w=400&h=300`}
-            alt={ramen.title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          />
-        </div>
-      )}
-
-      <div className="p-6 flex flex-col flex-1">
-        <header className="mb-4">
-          <h3 className="font-semibold text-xl mb-3 leading-tight text-gray-900 line-clamp-2">
+    <article className="grid [grid-template-rows:subgrid] [grid-row:span_5] bg-white border border-gray-100 rounded-lg overflow-hidden transition-all duration-200 group hover:border-gray-200 hover:shadow-sm">
+      {/* 画像・タイトルエリア */}
+      <div className="relative">
+        {ramen.images?.[0] && (
+          <div className="aspect-[4/3] w-full overflow-hidden bg-gray-50">
+            <img
+              src={`${ramen.images[0].url}?fit=crop&w=400&h=300`}
+              alt={ramen.title}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+        )}
+        <div className="p-6 pb-3">
+          <h3 className="font-semibold text-xl leading-tight text-gray-900 line-clamp-2">
             {ramen.title}
           </h3>
+        </div>
+      </div>
 
-          {/* 説明文用の固定高さエリア */}
-          <div className="min-h-[60px]">
-            {ramen.description && (
-              <p className="text-gray-600 leading-relaxed text-sm line-clamp-3">
-                {ramen.description}
-              </p>
+      {/* 説明文エリア */}
+      <div className="px-6 pb-3">
+        {ramen.description && (
+          <p className="text-gray-600 leading-relaxed text-sm line-clamp-3">
+            {ramen.description}
+          </p>
+        )}
+      </div>
+
+      {/* 訪問日エリア */}
+      <div className="px-6 pb-2">
+        {visitDate && (
+          <time className="text-sm text-gray-500 font-medium">{visitDate}</time>
+        )}
+      </div>
+
+      {/* 評価・価格・タグエリア */}
+      <div className="px-6 pb-4 space-y-3">
+        {/* 評価・価格 */}
+        {(ratingStars || formattedPrice) && (
+          <div className="space-y-1">
+            {ratingStars && (
+              <div className="flex items-center gap-2">
+                <span
+                  className="text-amber-400 text-sm font-medium"
+                  title={`${ramen.rating}/5`}
+                >
+                  {ratingStars}
+                </span>
+                <span className="text-xs text-gray-500">({ramen.rating})</span>
+              </div>
+            )}
+
+            {formattedPrice && (
+              <div className="text-sm text-gray-700 font-medium">
+                {formattedPrice}
+              </div>
             )}
           </div>
-        </header>
+        )}
 
-        <div className="space-y-3 mb-6 flex-1">
-          {visitDate && (
-            <div className="flex items-center text-sm text-gray-500">
-              <time className="font-medium">{visitDate}</time>
-            </div>
-          )}
-
-          {ratingStars && (
-            <div className="flex items-center gap-2">
-              <span
-                className="text-amber-400 text-sm font-medium"
-                title={`${ramen.rating}/5`}
-              >
-                {ratingStars}
-              </span>
-              <span className="text-xs text-gray-500">({ramen.rating})</span>
-            </div>
-          )}
-
-          {formattedPrice && (
-            <div className="text-sm text-gray-700 font-medium">
-              {formattedPrice}
-            </div>
-          )}
-        </div>
-
+        {/* タグ */}
         {ramen.tags && ramen.tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-6">
+          <div className="flex flex-wrap gap-2">
             {ramen.tags.map((tag) => (
               <span
                 key={tag.id}
@@ -96,9 +104,12 @@ export const RamenCard: React.FC<RamenCardProps> = ({ ramen }) => {
             ))}
           </div>
         )}
+      </div>
 
-        {(ramen.googleMapUrl || ramen.tabelogUrl) && (
-          <footer className="flex gap-2 pt-4 border-t border-gray-50 mt-auto">
+      {/* ボタンエリア */}
+      {(ramen.googleMapUrl || ramen.tabelogUrl) && (
+        <footer className="p-6 pt-4 border-t border-gray-50 mt-auto">
+          <div className="flex gap-2">
             {ramen.googleMapUrl && (
               <a
                 href={ramen.googleMapUrl}
@@ -122,9 +133,9 @@ export const RamenCard: React.FC<RamenCardProps> = ({ ramen }) => {
                 <span>食べログ</span>
               </a>
             )}
-          </footer>
-        )}
-      </div>
+          </div>
+        </footer>
+      )}
     </article>
   );
 };
