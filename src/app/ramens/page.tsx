@@ -129,14 +129,16 @@ export default async function RamensPage({ searchParams }: RamensPageProps) {
       <div className="max-w-5xl mx-auto px-6">
         <header className="py-4 text-center border-b border-gray-100">
           <div className="flex justify-center">
-            <SteamingBowlColor className="w-16 h-16 opacity-80" />
+            <div className="w-16 h-16 flex items-center justify-center bg-orange-50 rounded-full">
+              <SteamingBowlColor className="w-8 h-8" />
+            </div>
           </div>
         </header>
 
         <main className="py-8">
           {/* 検索フォーム */}
           <div className="space-y-6 mb-8">
-            <RamenSearchForm />
+            <RamenSearchForm defaultValue={q || ""} />
             <RamenTagSelector
               tags={tagsResult.value.contents}
               selectedTagIds={tagIds}

@@ -10,7 +10,7 @@ export type RamenSearchFormProps = {
 };
 
 export const RamenSearchForm: React.FC<RamenSearchFormProps> = ({
-  defaultValue,
+  defaultValue = "",
   placeholder = "キーワードで検索",
   className = "",
 }) => {
