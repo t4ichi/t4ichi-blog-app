@@ -39,7 +39,7 @@ export const orvalGetRamenTagsResponse = zod.object({
   "category": zod.array(zod.enum(['type', 'area', 'feature', 'taste', 'price', 'atmosphere', 'service'])).describe('タグカテゴリ（配列形式）'),
   "description": zod.string().nullish().describe('タグの説明')
 })),
-  "totalCount": zod.number().describe('総件数'),
+  "totalCount": zod.number().nullish().describe('総件数'),
   "offset": zod.number().describe('取得開始位置'),
   "limit": zod.number().describe('取得件数の上限')
 })

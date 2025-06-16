@@ -7,11 +7,9 @@ import { getRamens } from "@/features/ramen/fetchers";
 import SteamingBowlColor from "@/icons/steaming_bowl_color.svg";
 import { z } from "zod";
 
-// OpenNext Cloudflare対応: Node.js runtimeを使用
-// export const runtime = 'edge'; // Edge Runtimeは使用しない
-
-// 動的ページ設定
-export const dynamic = 'force-dynamic';
+// Cloudflare Pages対応設定
+export const runtime = "edge";
+export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
 const searchParamsSchema = z.object({
@@ -27,11 +25,26 @@ type RamensPageProps = {
 };
 
 export default async function RamensPage({ searchParams }: RamensPageProps) {
-  const { q, tags, page = 1 } = searchParamsSchema.parse(await searchParams);
+  // Edge Runtime用のエラーハンドリング付きでsearchParamsを解析
+  let parsedParams: SearchParams;
+  try {
+    const awaitedSearchParams = await searchParams;
+    parsedParams = searchParamsSchema.parse(awaitedSearchParams);
+  } catch (error) {
+    console.error("SearchParams parsing error:", error);
+    parsedParams = { q: undefined, tags: undefined, page: undefined };
+  }
 
-  const tagIds = tags ? tags.split(",").filter(Boolean) : [];
+  const { q, tags, page = 1 } = parsedParams;
+
+  const tagIds: string[] = tags ? tags.split(",").filter(Boolean) : [];
 
   const searchFilters = [];
+
+  // 検索キーワードによるフィルタリング
+  if (q?.trim()) {
+    searchFilters.push(`q=${encodeURIComponent(q.trim())}`);
+  }
 
   // タグによるフィルタリング
   if (tagIds.length > 0) {
@@ -47,14 +60,14 @@ export default async function RamensPage({ searchParams }: RamensPageProps) {
       limit,
       offset,
       orders: "-visitDate",
-      ...(q && { q }), // 検索キーワード
-      ...(searchFilters.length > 0 && { filters: searchFilters.join("[and]") }), // フィルター条件
+      q: q?.trim() || undefined,
+      filters: searchFilters.length > 0 ? searchFilters.join("&") : undefined,
     }),
     getRamenTags({ limit: 100 }),
   ]);
 
   // ページネーション情報の計算
-  const totalCount = ramenResult.ok ? ramenResult.value.totalCount : 0;
+  const totalCount = ramenResult.ok ? (ramenResult.value.totalCount ?? 0) : 0;
   const totalPages = Math.ceil(totalCount / limit);
 
   // エラーハンドリング
@@ -92,7 +105,7 @@ export default async function RamensPage({ searchParams }: RamensPageProps) {
     <div className="min-h-screen bg-white text-gray-900">
       <div className="max-w-5xl mx-auto px-6">
         <header className="py-4 text-center border-b border-gray-100">
-          <div className="flex justify-center ">
+          <div className="flex justify-center">
             <SteamingBowlColor className="w-16 h-16 opacity-80" />
           </div>
         </header>
@@ -100,37 +113,26 @@ export default async function RamensPage({ searchParams }: RamensPageProps) {
         <main className="py-8">
           {/* 検索フォーム */}
           <div className="space-y-6 mb-8">
-            <RamenSearchForm defaultValue={q} className="max-w-2xl mx-auto" />
-
+            <RamenSearchForm />
             <RamenTagSelector
               tags={tagsResult.value.contents}
               selectedTagIds={tagIds}
             />
           </div>
 
-          {/* 検索結果表示 */}
-          {(q || tagIds.length > 0) && (
-            <div className="mb-6 text-center">
-              <div className="text-sm text-gray-600">
-                {q && <span>キーワード: 「{q}」</span>}
-                {q && tagIds.length > 0 && <span className="mx-2">•</span>}
-                {tagIds.length > 0 && (
-                  <span>選択中のタグ: {tagIds.length}個</span>
-                )}
-              </div>
-            </div>
-          )}
-
           <RamenList ramens={ramenResult.value.contents} />
 
           {/* ページネーション */}
-          <Pagination
-            currentPage={page}
-            totalPages={totalPages}
-            totalCount={totalCount}
-            limit={limit}
-            className="mt-12"
-          />
+          {totalPages > 1 && (
+            <div className="mt-12">
+              <Pagination
+                currentPage={page}
+                totalPages={totalPages}
+                totalCount={totalCount}
+                limit={limit}
+              />
+            </div>
+          )}
         </main>
       </div>
     </div>

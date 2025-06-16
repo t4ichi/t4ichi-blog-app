@@ -1,4 +1,4 @@
-import "server-only";
+// import "server-only"; // Cloudflare Pages Edge Runtime対応のため無効化
 
 import {
   orvalGetRamenById,

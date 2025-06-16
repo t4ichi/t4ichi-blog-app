@@ -23,16 +23,16 @@ export const RamenSearchForm: React.FC<RamenSearchFormProps> = ({
     const query = formData.get("q") as string;
 
     const params = new URLSearchParams(searchParams.toString());
-    
+
     if (query?.trim()) {
       params.set("q", query);
     } else {
       params.delete("q");
     }
-    
+
     // ページをリセット
     params.delete("page");
-    
+
     router.push(`?${params.toString()}`);
   };
 

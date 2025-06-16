@@ -45,7 +45,10 @@ const meta = {
       </CardHeader>
       <CardContent className="grid gap-4">
         {notifications.map((notification, index) => (
-          <div key={index} className="flex items-center gap-4">
+          <div
+            key={`notification-${index}`}
+            className="flex items-center gap-4"
+          >
             <BellRing className="size-6" />
             <div>
               <p>{notification.title}</p>

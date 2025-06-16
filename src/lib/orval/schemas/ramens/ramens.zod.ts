@@ -62,7 +62,7 @@ export const orvalGetRamensResponse = zod.object({
   "rating": zod.number().min(1).max(orvalGetRamensResponseContentsItemRatingMax).nullish().describe('評価（1-5）'),
   "price": zod.number().nullish().describe('価格')
 })),
-  "totalCount": zod.number().describe('総件数'),
+  "totalCount": zod.number().nullish().describe('総件数'),
   "offset": zod.number().describe('取得開始位置'),
   "limit": zod.number().describe('取得件数の上限')
 })

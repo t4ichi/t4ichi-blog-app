@@ -9,8 +9,11 @@ import type { RamenTag } from './ramenTag';
 
 export interface RamenTagListResponse {
   contents: RamenTag[];
-  /** 総件数 */
-  totalCount: number;
+  /**
+   * 総件数
+   * @nullable
+   */
+  totalCount?: number | null;
   /** 取得開始位置 */
   offset: number;
   /** 取得件数の上限 */

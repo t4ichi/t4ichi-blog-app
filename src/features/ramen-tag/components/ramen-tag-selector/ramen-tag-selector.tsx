@@ -55,10 +55,10 @@ export const RamenTagSelector: React.FC<RamenTagSelectorProps> = ({
   const handleTagClick = (tag: RamenTag) => {
     const params = new URLSearchParams(searchParams.toString());
     const currentTags = params.get("tags")?.split(",").filter(Boolean) || [];
-    
+
     const isSelected = currentTags.includes(tag.id);
     let newTags: string[];
-    
+
     if (isSelected) {
       // タグを削除
       newTags = currentTags.filter((id) => id !== tag.id);
@@ -66,17 +66,17 @@ export const RamenTagSelector: React.FC<RamenTagSelectorProps> = ({
       // タグを追加
       newTags = [...currentTags, tag.id];
     }
-    
+
     // パラメータを更新
     if (newTags.length > 0) {
       params.set("tags", newTags.join(","));
     } else {
       params.delete("tags");
     }
-    
+
     // ページをリセット
     params.delete("page");
-    
+
     router.push(`?${params.toString()}`);
   };
 

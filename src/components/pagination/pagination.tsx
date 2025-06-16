@@ -46,8 +46,12 @@ export const Pagination: React.FC<PaginationProps> = ({
   const getVisiblePages = () => {
     const delta = 2; // 現在のページの前後に表示するページ数
     const range = [];
-    
-    for (let i = Math.max(2, currentPage - delta); i <= Math.min(totalPages - 1, currentPage + delta); i++) {
+
+    for (
+      let i = Math.max(2, currentPage - delta);
+      i <= Math.min(totalPages - 1, currentPage + delta);
+      i++
+    ) {
       range.push(i);
     }
 
@@ -104,7 +108,10 @@ export const Pagination: React.FC<PaginationProps> = ({
         {visiblePages.map((page, index) => {
           if (page === -1) {
             return (
-              <span key={`ellipsis-${index}`} className="px-3 py-2 text-gray-400">
+              <span
+                key={`ellipsis-${index}`}
+                className="px-3 py-2 text-gray-400"
+              >
                 ...
               </span>
             );

@@ -19,7 +19,7 @@ export const ramenTagSchema = z.object({
   category: z.array(
     z.enum([
       "type",
-      "area", 
+      "area",
       "feature",
       "taste",
       "price",

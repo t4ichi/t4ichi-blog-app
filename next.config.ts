@@ -3,10 +3,13 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
-  
-  // OpenNext Cloudflare対応
-  output: 'standalone',
-  
+
+  // Cloudflare Pages対応 (next-on-pages)
+  // output: 'standalone', // next-on-pagesが自動設定
+
+  // Cloudflare Pages用の設定
+  serverExternalPackages: ["async_hooks"],
+
   webpack(config) {
     // パスエイリアスを追加
     config.resolve.alias = {

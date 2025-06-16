@@ -13,7 +13,29 @@
       "**/public/**",
       "**/coverage/**",
       "**/src/lib/orval/fetchers/**",
-      "**/src/lib/orval/schemas/**"
+      "**/src/lib/orval/schemas/**",
+      "**/.vercel/**",
+      "**/dist/**",
+      "**/build/**",
+      "**/.storybook/**",
+      "**/storybook-static/**",
+      "**/*.config.js",
+      "**/*.config.ts",
+      "**/*.config.mjs",
+      "**/tailwind.config.*",
+      "**/postcss.config.*",
+      "**/vitest.config.*",
+      "**/orval.config.*",
+      "**/wrangler.toml",
+      "**/*.d.ts",
+      "**/CLAUDE.md",
+      "**/README.md",
+      "**/.env*",
+      "**/package.json",
+      "**/package-lock.json",
+      "**/pnpm-lock.yaml",
+      "**/yarn.lock",
+      "**/*.log"
     ]
   },
   "formatter": {
@@ -27,7 +49,10 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true
+      "recommended": true,
+      "suspicious": {
+        "noArrayIndexKey": "off"
+      }
     }
   },
   "javascript": {

@@ -1,18 +1,11 @@
-import "server-only";
+// import "server-only"; // Cloudflare Pages Edge Runtime対応のため無効化
 
-import {
-  orvalGetRamenTags,
-} from "@/lib/orval/fetchers/ramen-tags/ramen-tags.fetcher";
-import {
-  orvalGetRamenTagsResponse,
-} from "@/lib/orval/schemas/ramen-tags/ramen-tags.zod";
+import { orvalGetRamenTags } from "@/lib/orval/fetchers/ramen-tags/ramen-tags.fetcher";
+import { orvalGetRamenTagsResponse } from "@/lib/orval/schemas/ramen-tags/ramen-tags.zod";
 import type { ApiError } from "@/types/api";
 import { parseApiError } from "@/utils/api";
 import type { Result } from "@/utils/result";
-import type {
-  GetRamenTagsParams,
-  RamenTagListResponse,
-} from "./types";
+import type { GetRamenTagsParams, RamenTagListResponse } from "./types";
 
 /**
  * ラーメンタグ一覧を取得

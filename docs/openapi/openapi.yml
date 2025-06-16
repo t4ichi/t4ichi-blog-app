@@ -343,6 +343,7 @@ components:
         totalCount:
           type: integer
           description: 総件数
+          nullable: true
         offset:
           type: integer
           description: 取得開始位置
@@ -351,7 +352,6 @@ components:
           description: 取得件数の上限
       required:
         - contents
-        - totalCount
         - offset
         - limit
 
@@ -437,6 +437,7 @@ components:
         totalCount:
           type: integer
           description: 総件数
+          nullable: true
         offset:
           type: integer
           description: 取得開始位置
@@ -445,7 +446,6 @@ components:
           description: 取得件数の上限
       required:
         - contents
-        - totalCount
         - offset
         - limit
 
