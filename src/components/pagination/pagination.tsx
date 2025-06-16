@@ -40,9 +40,6 @@ export const Pagination: React.FC<PaginationProps> = ({
   // ページ数が1以下の場合は表示しない
   if (totalPages <= 1) return null;
 
-  // 表示範囲の計算
-  const startItem = (currentPage - 1) * limit + 1;
-  const endItem = Math.min(currentPage * limit, totalCount);
 
   // 表示するページ番号の範囲を計算
   const getVisiblePages = () => {
@@ -82,11 +79,6 @@ export const Pagination: React.FC<PaginationProps> = ({
 
   return (
     <div className={`flex flex-col items-center space-y-4 ${className}`}>
-      {/* 件数表示 */}
-      <div className="text-sm text-gray-600">
-        {totalCount}件中 {startItem}-{endItem}件を表示
-      </div>
-
       {/* ページネーション */}
       <div className="flex items-center space-x-1">
         {/* 前のページボタン */}

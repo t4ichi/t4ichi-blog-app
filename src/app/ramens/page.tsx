@@ -89,6 +89,10 @@ export default async function RamensPage({ searchParams }: RamensPageProps) {
   const totalCount = ramenResult.ok ? (ramenResult.value.totalCount ?? 0) : 0;
   const totalPages = Math.ceil(totalCount / limit);
 
+  // 件数表示の計算
+  const startItem = totalCount > 0 ? (page - 1) * limit + 1 : 0;
+  const endItem = Math.min(page * limit, totalCount);
+
   // エラーハンドリング
   if (!ramenResult.ok) {
     return (
@@ -140,13 +144,28 @@ export default async function RamensPage({ searchParams }: RamensPageProps) {
             <div className="flex justify-end">
               <RamenSortSelector />
             </div>
+
+            {/* 表示件数*/}
+            {totalPages > 1 && (
+              <div className="text-center text-sm text-gray-600">
+                {totalCount > 0
+                  ? `${totalCount}件中 ${startItem}~${endItem}件を表示`
+                  : "0件"}
+              </div>
+            )}
           </div>
 
           <RamenList ramens={ramenResult.value.contents} />
 
           {/* ページネーション */}
           {totalPages > 1 && (
-            <div className="mt-12">
+            <div className="mt-12 space-y-4">
+              {/* 表示件数*/}
+              <div className="text-center text-sm text-gray-600">
+                {totalCount > 0
+                  ? `${totalCount}件中 ${startItem}~${endItem}件を表示`
+                  : "0件"}
+              </div>
               <Pagination
                 currentPage={page}
                 totalPages={totalPages}
