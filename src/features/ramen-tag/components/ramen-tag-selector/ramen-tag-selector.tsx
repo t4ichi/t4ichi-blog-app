@@ -2,10 +2,10 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
-import type { RamenTag } from "../../types";
+import type { RamenTag, RamenTagWithCount } from "../../types";
 
 export type RamenTagSelectorProps = {
-  tags: RamenTag[];
+  tags: RamenTagWithCount[];
   selectedTagIds?: string[];
   className?: string;
 };
@@ -22,7 +22,7 @@ export const RamenTagSelector: React.FC<RamenTagSelectorProps> = ({
   // selectedTagIdsから実際のタグオブジェクトを取得
   const selectedTags = tags.filter((tag) => selectedTagIds.includes(tag.id));
 
-  // カテゴリ別にタグをグループ化
+  // カテゴリ別にタグをグループ化（参照数でソート）
   const groupedTags = tags.reduce(
     (acc, tag) => {
       for (const cat of tag.category) {
@@ -33,8 +33,13 @@ export const RamenTagSelector: React.FC<RamenTagSelectorProps> = ({
       }
       return acc;
     },
-    {} as Record<string, RamenTag[]>,
+    {} as Record<string, RamenTagWithCount[]>,
   );
+
+  // 各カテゴリ内でタグを参照数順にソート
+  Object.keys(groupedTags).forEach((category) => {
+    groupedTags[category] = groupedTags[category].sort((a, b) => b.count - a.count);
+  });
 
   const categoryLabels: Record<string, string> = {
     type: "種類",
@@ -106,8 +111,17 @@ export const RamenTagSelector: React.FC<RamenTagSelectorProps> = ({
                 }
               `}
             >
-              {categoryLabels[category] || category}
-              <span className="ml-1 text-xs opacity-70">{tagCount}</span>
+              <span>{categoryLabels[category] || category}</span>
+              <span className={`
+                ml-2 px-2 py-0.5 text-xs rounded-full font-medium
+                ${
+                  isActive
+                    ? "bg-white/20 text-white"
+                    : "bg-gray-200 text-gray-600"
+                }
+              `}>
+                {tagCount}
+              </span>
             </button>
           );
         })}
@@ -158,7 +172,19 @@ export const RamenTagSelector: React.FC<RamenTagSelectorProps> = ({
                     }
                   `}
                 >
-                  {tag.name}
+                  <span>{tag.name}</span>
+                  {tag.count > 0 && (
+                    <span className={`
+                      ml-2 px-2 py-0.5 text-xs rounded-full font-medium
+                      ${
+                        isSelected
+                          ? "bg-white/20 text-white"
+                          : "bg-gray-100 text-gray-600"
+                      }
+                    `}>
+                      {tag.count}
+                    </span>
+                  )}
                 </button>
               );
             })}

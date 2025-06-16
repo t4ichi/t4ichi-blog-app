@@ -9,6 +9,11 @@ export type RamenTag = z.infer<typeof ramenTagSchema>;
 export type RamenTagListResponse = z.infer<typeof ramenTagListResponseSchema>;
 export type GetRamenTagsParams = z.infer<typeof getRamenTagsParamsSchema>;
 
+// 参照数付きのタグ型
+export type RamenTagWithCount = RamenTag & {
+  count: number;
+};
+
 // タグカテゴリの型定義
 export type RamenTagCategory =
   | "type" // ラーメンの種類

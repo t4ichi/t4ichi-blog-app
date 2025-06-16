@@ -1,6 +1,6 @@
 import { Pagination } from "@/components/pagination";
 import { RamenTagSelector } from "@/features/ramen-tag/components/ramen-tag-selector";
-import { getRamenTags } from "@/features/ramen-tag/fetchers";
+import { getRamenTagsWithCount } from "@/features/ramen-tag/fetchers";
 import { RamenList } from "@/features/ramen/components/ramen-list";
 import { RamenSearchForm } from "@/features/ramen/components/ramen-search-form";
 import { RamenSortSelector } from "@/features/ramen/components/ramen-sort-selector";
@@ -82,7 +82,7 @@ export default async function RamensPage({ searchParams }: RamensPageProps) {
       q: q?.trim() || undefined,
       filters: searchFilters.length > 0 ? searchFilters.join("&") : undefined,
     }),
-    getRamenTags({ limit: 100 }),
+    getRamenTagsWithCount({ limit: 100 }),
   ]);
 
   // ページネーション情報の計算
@@ -140,7 +140,7 @@ export default async function RamensPage({ searchParams }: RamensPageProps) {
           <div className="space-y-6 mb-8">
             <RamenSearchForm defaultValue={q || ""} />
             <RamenTagSelector
-              tags={tagsResult.value.contents}
+              tags={tagsResult.value}
               selectedTagIds={tagIds}
             />
             <div className="flex justify-end">
