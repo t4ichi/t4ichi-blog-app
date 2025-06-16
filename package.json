@@ -13,9 +13,9 @@
     "build-storybook": "storybook build",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
-    "pages:build": "npx @opennextjs/cloudflare build",
-    "preview": "npm run pages:build && npx @opennextjs/cloudflare preview",
-    "deploy": "npm run pages:build && wrangler pages deploy .open-next/cloudflare"
+    "pages:build": "npx @cloudflare/next-on-pages",
+    "preview": "npm run pages:build && wrangler pages dev .vercel/output/static",
+    "deploy": "npm run pages:build && wrangler pages deploy .vercel/output/static --project-name=t4ichi-blog-app"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",
@@ -35,6 +35,7 @@
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@chromatic-com/storybook": "^4.0.0",
+    "@cloudflare/next-on-pages": "^1.13.12",
     "@opennextjs/cloudflare": "^1.3.0",
     "@storybook/addon-a11y": "^9.0.9",
     "@storybook/addon-actions": "^9.0.8",

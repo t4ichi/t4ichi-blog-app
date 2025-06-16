@@ -48,4 +48,5 @@ coverage/
 
 # Cloudflare
 .wrangler
-.vercel/output
+.vercel/
+.open-next/
