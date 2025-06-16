@@ -25,6 +25,9 @@ export const RamenSortSelector: React.FC = () => {
 
   return (
     <div className="flex items-center gap-2">
+      <label htmlFor="sort-select" className="text-sm font-medium text-gray-700">
+        並び順:
+      </label>
       <div className="relative">
         <select
           id="sort-select"

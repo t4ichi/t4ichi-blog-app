@@ -85,6 +85,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           type="button"
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
+          aria-label="前のページに移動"
           className={`
             flex items-center justify-center w-10 h-10 rounded-lg border transition-colors duration-200
             ${
@@ -135,6 +136,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           type="button"
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
+          aria-label="次のページに移動"
           className={`
             flex items-center justify-center w-10 h-10 rounded-lg border transition-colors duration-200
             ${
