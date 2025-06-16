@@ -3,6 +3,7 @@ import { RamenTagSelector } from "@/features/ramen-tag/components/ramen-tag-sele
 import { getRamenTags } from "@/features/ramen-tag/fetchers";
 import { RamenList } from "@/features/ramen/components/ramen-list";
 import { RamenSearchForm } from "@/features/ramen/components/ramen-search-form";
+import { RamenSortSelector } from "@/features/ramen/components/ramen-sort-selector";
 import { getRamens } from "@/features/ramen/fetchers";
 import SteamingBowlColor from "@/icons/steaming_bowl_color.svg";
 import { z } from "zod";
@@ -16,6 +17,7 @@ const searchParamsSchema = z.object({
   q: z.string().optional().catch(undefined), // 検索キーワード
   tags: z.string().optional().catch(undefined), // タグID（カンマ区切り文字列）
   page: z.coerce.number().int().positive().optional().catch(undefined), // ページ番号（正の整数、将来対応）
+  sort: z.enum(["asc", "desc"]).optional().catch(undefined), // ソート順（asc: 古い順, desc: 新しい順）
 });
 
 type SearchParams = z.infer<typeof searchParamsSchema>;
@@ -35,7 +37,7 @@ export default async function RamensPage({ searchParams }: RamensPageProps) {
     parsedParams = { q: undefined, tags: undefined, page: undefined };
   }
 
-  const { q, tags, page = 1 } = parsedParams;
+  const { q, tags, page = 1, sort = "desc" } = parsedParams;
 
   const tagIds: string[] = tags ? tags.split(",").filter(Boolean) : [];
 
@@ -52,11 +54,14 @@ export default async function RamensPage({ searchParams }: RamensPageProps) {
   const limit = 12; // 1ページあたりの表示件数
   const offset = (page - 1) * limit;
 
+  // ソート順の設定
+  const orderBy = sort === "asc" ? "visitDate" : "-visitDate";
+
   const [ramenResult, tagsResult] = await Promise.all([
     getRamens({
       limit,
       offset,
-      orders: "-visitDate",
+      orders: orderBy,
       q: q?.trim() || undefined,
       filters: searchFilters.length > 0 ? searchFilters.join("&") : undefined,
     }),
@@ -115,6 +120,9 @@ export default async function RamensPage({ searchParams }: RamensPageProps) {
               tags={tagsResult.value.contents}
               selectedTagIds={tagIds}
             />
+            <div className="flex justify-end">
+              <RamenSortSelector />
+            </div>
           </div>
 
           <RamenList ramens={ramenResult.value.contents} />
