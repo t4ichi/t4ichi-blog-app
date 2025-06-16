@@ -2,6 +2,7 @@ import MapPinIcon from "@/icons/round_pushpin_color.svg";
 import TabelogIcon from "@/icons/tabelog.svg";
 import Image from "next/image";
 import type { Ramen } from "../../types";
+import { RamenCardTag } from "../ramen-card-tag";
 
 export type RamenCardProps = {
   ramen: Ramen;
@@ -76,18 +77,7 @@ export const RamenCard: React.FC<RamenCardProps> = ({ ramen }) => {
 
       {/* タグエリア */}
       <div className="px-6">
-        {ramen.tags && ramen.tags.length > 0 && (
-          <div className="flex flex-wrap gap-2">
-            {ramen.tags.map((tag) => (
-              <span
-                key={tag.id}
-                className="px-3 py-1 bg-gray-50 text-gray-700 text-xs font-medium rounded-full border border-gray-100"
-              >
-                {tag.name}
-              </span>
-            ))}
-          </div>
-        )}
+        <RamenCardTag tags={ramen.tags || []} />
       </div>
 
       {/* タイトルエリア */}
