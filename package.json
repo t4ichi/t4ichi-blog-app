@@ -61,5 +61,11 @@
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.2.3",
     "wrangler": "^4.20.0"
-  }
+  },
+  "browserslist": [
+    "chrome >= 91",
+    "firefox >= 90",
+    "safari >= 15",
+    "edge >= 91"
+  ]
 }

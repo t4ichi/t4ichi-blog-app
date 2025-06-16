@@ -4,6 +4,18 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
 
+  // モダンブラウザターゲット設定（legacy JavaScript削減）
+  compiler: {
+    // SWC設定でモダンブラウザをターゲット
+    removeConsole: process.env.NODE_ENV === "production",
+  },
+
+  // 実験的機能：モダンJavaScript出力
+  experimental: {
+    // Next.js 15でサポートされている最適化
+    optimizePackageImports: ["lucide-react"],
+  },
+
   // 画像最適化の設定
   images: {
     remotePatterns: [
