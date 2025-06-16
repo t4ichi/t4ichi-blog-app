@@ -33,6 +33,8 @@ export const Pagination: React.FC<PaginationProps> = ({
 
   const handlePageChange = (page: number) => {
     router.push(createPageUrl(page));
+    // ページ切り替え時にトップにスクロール
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   // ページ数が1以下の場合は表示しない
