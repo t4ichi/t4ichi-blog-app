@@ -6,6 +6,7 @@ import { RamenCardTag } from "../ramen-card-tag";
 
 export type RamenCardProps = {
   ramen: Ramen;
+  priority?: boolean;
 };
 
 const formatVisitDate = (dateString?: string | null) => {
@@ -27,7 +28,7 @@ const formatPrice = (price?: number | null) => {
   return `¥${price.toLocaleString()}`;
 };
 
-export const RamenCard: React.FC<RamenCardProps> = ({ ramen }) => {
+export const RamenCard: React.FC<RamenCardProps> = ({ ramen, priority = false }) => {
   const visitDate = formatVisitDate(ramen.visitDate);
   const ratingStars = getRatingStars(ramen.rating);
   const formattedPrice = formatPrice(ramen.price);
@@ -43,6 +44,7 @@ export const RamenCard: React.FC<RamenCardProps> = ({ ramen }) => {
               alt={ramen.title}
               width={400}
               height={300}
+              priority={priority}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             />
             {/* 訪問日オーバーレイ */}

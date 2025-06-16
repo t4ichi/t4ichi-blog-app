@@ -20,6 +20,8 @@ const nextConfig: NextConfig = {
         pathname: "/**",
       },
     ],
+    formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 86400, // 24時間
   },
 
   // Cloudflare Pages対応 (next-on-pages)

@@ -34,8 +34,8 @@ export const RamenList: React.FC<RamenListProps> = ({ ramens }) => {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-4 [grid-template-rows:repeat(auto-fit,auto_auto_min-content_min-content_auto)] items-start">
-      {ramens.map((ramen) => (
-        <RamenCard key={ramen.id} ramen={ramen} />
+      {ramens.map((ramen, index) => (
+        <RamenCard key={ramen.id} ramen={ramen} priority={index < 3} />
       ))}
     </div>
   );
