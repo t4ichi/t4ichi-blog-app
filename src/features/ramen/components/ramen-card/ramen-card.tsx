@@ -1,5 +1,6 @@
 import MapPinIcon from "@/icons/round_pushpin_color.svg";
 import TabelogIcon from "@/icons/tabelog.svg";
+import Image from "next/image";
 import type { Ramen } from "../../types";
 
 export type RamenCardProps = {
@@ -36,9 +37,11 @@ export const RamenCard: React.FC<RamenCardProps> = ({ ramen }) => {
       <div className="relative">
         {ramen.images?.[0] && (
           <div className="aspect-[4/3] w-full overflow-hidden bg-gray-50">
-            <img
+            <Image
               src={`${ramen.images[0].url}?fit=crop&w=400&h=300`}
               alt={ramen.title}
+              width={400}
+              height={300}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             />
           </div>

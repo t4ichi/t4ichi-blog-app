@@ -1,4 +1,5 @@
 import SteamingBowlColor from "@/icons/steaming_bowl_color.svg";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
@@ -9,9 +10,11 @@ export default function Home() {
           {/* Profile Section */}
           <section className="text-center">
             <div className="w-32 h-32 mx-auto mb-6">
-              <img
+              <Image
                 src="https://github.com/t4ichi.png"
-                alt=""
+                alt="Ito Taichi"
+                width={128}
+                height={128}
                 className="w-full h-full rounded-full object-cover border-4 border-blue-200"
               />
             </div>
@@ -53,6 +56,8 @@ export default function Home() {
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
+                  role="img"
+                  aria-label="GitHub"
                 >
                   <path
                     fillRule="evenodd"

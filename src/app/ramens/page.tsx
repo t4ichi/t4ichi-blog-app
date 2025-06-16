@@ -49,8 +49,8 @@ export default async function RamensPage({ searchParams }: RamensPageProps) {
   // タグによるフィルタリング（AND検索）
   if (tagIds.length > 0) {
     // AND検索：すべてのタグIDを含むもの
-    const andConditions = tagIds.map(tagId => `tags[contains]${tagId}`);
-    searchFilters.push(andConditions.join('[and]'));
+    const andConditions = tagIds.map((tagId) => `tags[contains]${tagId}`);
+    searchFilters.push(andConditions.join("[and]"));
   }
 
   // ページネーション用の設定

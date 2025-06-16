@@ -4,6 +4,24 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
 
+  // 画像最適化の設定
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.microcms-assets.io",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "github.com",
+        port: "",
+        pathname: "/**",
+      },
+    ],
+  },
+
   // Cloudflare Pages対応 (next-on-pages)
   // output: 'standalone', // next-on-pagesが自動設定
 
