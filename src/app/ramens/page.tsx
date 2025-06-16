@@ -41,11 +41,6 @@ export default async function RamensPage({ searchParams }: RamensPageProps) {
 
   const searchFilters = [];
 
-  // 検索キーワードによるフィルタリング
-  if (q?.trim()) {
-    searchFilters.push(`q=${encodeURIComponent(q.trim())}`);
-  }
-
   // タグによるフィルタリング（AND検索）
   if (tagIds.length > 0) {
     // AND検索：すべてのタグIDを含むもの
