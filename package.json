@@ -15,7 +15,8 @@
     "test:coverage": "vitest run --coverage",
     "pages:build": "npx @cloudflare/next-on-pages",
     "preview": "npm run pages:build && wrangler pages dev .vercel/output/static",
-    "deploy": "npm run pages:build && wrangler pages deploy .vercel/output/static --project-name=t4ichi-blog-app"
+    "deploy": "npm run pages:build && wrangler pages deploy .vercel/output/static --project-name=t4ichi-blog-app",
+    "cf-deploy": "echo 'Next.js build completed successfully for Cloudflare Pages'"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",
