@@ -1,3 +1,4 @@
+import { SiteFooter } from "@/features/site/components/site-footer";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -12,7 +13,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {children}
+        <SiteFooter />
+      </body>
     </html>
   );
 }
