@@ -16,6 +16,7 @@ export default function Home() {
                 alt="Ito Taichi"
                 width={128}
                 height={128}
+                priority
                 className="w-full h-full rounded-full object-cover border-4 border-blue-200"
               />
             </div>

@@ -1,5 +1,6 @@
 import MapPinIcon from "@/icons/round_pushpin_color.svg";
 import TabelogIcon from "@/icons/tabelog.svg";
+import { optimizeMicroCMSImage } from "@/utils/image-optimization";
 import Image from "next/image";
 import type { Ramen } from "../../types";
 import { RamenCardTag } from "../ramen-card-tag";
@@ -40,7 +41,12 @@ export const RamenCard: React.FC<RamenCardProps> = ({ ramen, priority = false })
         {ramen.images?.[0] && (
           <div className="aspect-[4/3] w-full overflow-hidden bg-gray-50">
             <Image
-              src={`${ramen.images[0].url}?fit=crop&w=400&h=300`}
+              src={optimizeMicroCMSImage(ramen.images[0].url, {
+                width: 400,
+                height: 300,
+                format: 'webp',
+                quality: 85,
+              })}
               alt={ramen.title}
               width={400}
               height={300}
