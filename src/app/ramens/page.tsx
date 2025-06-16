@@ -6,12 +6,29 @@ import { RamenSearchForm } from "@/features/ramen/components/ramen-search-form";
 import { RamenSortSelector } from "@/features/ramen/components/ramen-sort-selector";
 import { getRamens } from "@/features/ramen/fetchers";
 import SteamingBowlColor from "@/icons/steaming_bowl_color.svg";
+import type { Metadata } from "next";
 import { z } from "zod";
 
 // Cloudflare Pages対応設定
 export const runtime = "edge";
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
+
+export const metadata: Metadata = {
+  title: "Ramen | taichi no heya",
+  description: "ラーメン食べ歩き記録。各店舗の記録と写真を掲載しています。",
+  openGraph: {
+    title: "Ramen | taichi no heya",
+    description: "ラーメン食べ歩き記録。各店舗の記録と写真を掲載しています。",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Ramen | taichi no heya",
+    description:
+      "ラーメン食べ歩き記録。各店舗の訪問記録と写真を掲載しています。",
+  },
+};
 
 const searchParamsSchema = z.object({
   q: z.string().optional().catch(undefined), // 検索キーワード

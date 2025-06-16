@@ -1,5 +1,15 @@
 import PawPrintsColor from "@/icons/paw_prints_color.svg";
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "ページが見つかりません | taichi no heya",
+  description: "お探しのページは見つかりませんでした。",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function NotFound() {
   return (
