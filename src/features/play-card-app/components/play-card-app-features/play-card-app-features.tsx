@@ -24,9 +24,6 @@ export const PlayCardAppFeatures: React.FC<PlayCardAppFeaturesProps> = ({
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
             {title}
           </h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            シンプルだからこそ、細部にもこだわった設計
-          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -44,11 +41,12 @@ type FeatureDetailCardProps = {
 };
 
 const FeatureDetailCard: React.FC<FeatureDetailCardProps> = ({ feature }) => {
+  const Icon = feature.icon;
   return (
     <div className="group">
       <div className="flex items-start gap-6">
-        <div className="text-3xl flex-shrink-0 w-12 h-12 bg-slate-100 border border-slate-200 rounded-xl flex items-center justify-center group-hover:bg-slate-200 transition-colors">
-          {feature.icon}
+        <div className="flex-shrink-0 w-16 h-16 bg-slate-100 border border-slate-200 rounded-xl flex items-center justify-center group-hover:bg-slate-200 transition-colors">
+          <Icon className="w-8 h-8 text-slate-600" />
         </div>
 
         <div className="flex-1">

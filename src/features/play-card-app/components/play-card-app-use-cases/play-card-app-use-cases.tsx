@@ -44,11 +44,12 @@ type UseCaseCardProps = {
 };
 
 const UseCaseCard: React.FC<UseCaseCardProps> = ({ useCase }) => {
+  const Icon = useCase.icon;
   return (
     <div className="bg-white border border-slate-200 rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300 group">
       <div className="flex items-start gap-6">
-        <div className="text-5xl flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-          {useCase.icon}
+        <div className="flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+          <Icon className="w-12 h-12" />
         </div>
 
         <div className="flex-1">

@@ -28,7 +28,6 @@ export const Default: Story = {
   },
 };
 
-
 export const WithoutDescription: Story = {
   args: {
     screenshot: {
