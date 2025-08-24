@@ -15,6 +15,7 @@ export type AppScreenshot = {
   alt: string;
   title: string;
   description?: string;
+  type?: "image" | "video";
 };
 
 export type AppFeature = {

@@ -18,13 +18,13 @@ export const PlayCardAppFeatures: React.FC<PlayCardAppFeaturesProps> = ({
   }
 
   return (
-    <section className={`py-16 bg-background ${className}`}>
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+    <section className={className}>
+      <div className="max-w-5xl mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
             {title}
           </h2>
-          <p className="text-base text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
             シンプルだからこそ、細部にもこだわった設計
           </p>
         </div>
@@ -47,16 +47,16 @@ const FeatureDetailCard: React.FC<FeatureDetailCardProps> = ({ feature }) => {
   return (
     <div className="group">
       <div className="flex items-start gap-6">
-        <div className="text-3xl flex-shrink-0 w-12 h-12 bg-muted border border-border rounded-lg flex items-center justify-center group-hover:border-ring transition-colors">
+        <div className="text-3xl flex-shrink-0 w-12 h-12 bg-slate-100 border border-slate-200 rounded-xl flex items-center justify-center group-hover:bg-slate-200 transition-colors">
           {feature.icon}
         </div>
 
         <div className="flex-1">
-          <h3 className="text-lg font-bold text-foreground mb-3">
+          <h3 className="text-xl font-bold text-slate-900 mb-3">
             {feature.title}
           </h3>
 
-          <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+          <p className="text-slate-600 leading-relaxed mb-4">
             {feature.description}
           </p>
 
@@ -65,10 +65,10 @@ const FeatureDetailCard: React.FC<FeatureDetailCardProps> = ({ feature }) => {
               {feature.details.map((detail, index) => (
                 <li
                   key={index}
-                  className="flex items-center text-muted-foreground text-sm"
+                  className="flex items-center text-slate-600"
                 >
                   <svg
-                    className="w-4 h-4 text-primary mr-3 flex-shrink-0"
+                    className="w-4 h-4 text-blue-500 mr-3 flex-shrink-0"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     role="img"

@@ -51,3 +51,16 @@ export const WithoutDescription: Story = {
     },
   },
 };
+
+export const VideoDemo: Story = {
+  args: {
+    screenshot: {
+      src: "/images/apps/play-card-app/app-demo.mp4",
+      alt: "アプリ操作デモ動画",
+      title: "実際のアプリ操作",
+      description:
+        "カード引きから履歴表示まで、実際のアプリ操作を動画でご確認いただけます",
+      type: "video",
+    },
+  },
+};

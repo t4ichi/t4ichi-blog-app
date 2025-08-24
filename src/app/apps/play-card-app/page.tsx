@@ -51,7 +51,7 @@ export const metadata: Metadata = {
 
 export default function PlayCardAppPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-slate-50">
       {/* ヒーローセクション */}
       <PlayCardAppHero
         name={PLAY_CARD_APP_INFO.name}
@@ -61,25 +61,25 @@ export default function PlayCardAppPage() {
         appStoreUrl={PLAY_CARD_APP_INFO.appStoreUrl}
       />
 
-      {/* スクリーンショット */}
+      {/* スクリーンショット・動画デモ */}
       <AppsScreenshots
         screenshots={PLAY_CARD_APP_INFO.screenshots}
-        title="アプリ画面"
-        className="py-16 bg-muted/30"
+        title="実際のアプリをご覧ください"
+        className="py-20 bg-white"
       />
 
       {/* 利用シーン */}
       <PlayCardAppUseCases
         useCases={PLAY_CARD_APP_USE_CASES}
         title="こんなシーンで活躍"
-        className="py-16 bg-background"
+        className="py-20 bg-slate-50"
       />
 
       {/* アプリの特徴 */}
       <PlayCardAppFeatures
         features={PLAY_CARD_APP_FEATURES}
         title="アプリの特徴"
-        className="py-16 bg-muted/30"
+        className="py-20 bg-white"
       />
     </div>
   );

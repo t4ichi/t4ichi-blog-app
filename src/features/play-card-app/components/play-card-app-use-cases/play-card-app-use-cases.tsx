@@ -18,13 +18,13 @@ export const PlayCardAppUseCases: React.FC<PlayCardAppUseCasesProps> = ({
   }
 
   return (
-    <section className={`py-16 bg-muted ${className}`}>
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+    <section className={className}>
+      <div className="max-w-5xl mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
             {title}
           </h2>
-          <p className="text-base text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
             パーティーから日常まで、様々なシーンで楽しめます
           </p>
         </div>
@@ -45,18 +45,18 @@ type UseCaseCardProps = {
 
 const UseCaseCard: React.FC<UseCaseCardProps> = ({ useCase }) => {
   return (
-    <div className="bg-card border border-border rounded-lg p-6 hover:border-ring transition-colors group">
+    <div className="bg-white border border-slate-200 rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300 group">
       <div className="flex items-start gap-6">
         <div className="text-5xl flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
           {useCase.icon}
         </div>
 
         <div className="flex-1">
-          <h3 className="text-lg font-bold text-foreground mb-3">
+          <h3 className="text-xl font-bold text-slate-900 mb-3">
             {useCase.title}
           </h3>
 
-          <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+          <p className="text-slate-600 leading-relaxed mb-4">
             {useCase.description}
           </p>
 
@@ -64,7 +64,7 @@ const UseCaseCard: React.FC<UseCaseCardProps> = ({ useCase }) => {
             {useCase.examples.map((example, index) => (
               <span
                 key={index}
-                className="inline-block px-3 py-1 bg-muted text-muted-foreground text-xs rounded-full font-medium"
+                className="inline-block px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full font-medium"
               >
                 {example}
               </span>

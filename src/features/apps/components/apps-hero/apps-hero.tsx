@@ -8,6 +8,7 @@ export type AppsHeroProps = {
   icon?: string;
   iconImage?: string;
   children?: React.ReactNode;
+  className?: string;
 };
 
 export const AppsHero: React.FC<AppsHeroProps> = ({
@@ -17,37 +18,38 @@ export const AppsHero: React.FC<AppsHeroProps> = ({
   icon,
   iconImage,
   children,
+  className = "",
 }) => {
   return (
-    <section className="relative min-h-[500px] bg-background">
-      <div className="max-w-4xl mx-auto px-6 py-20 text-center">
+    <section className={`relative min-h-[600px] bg-gradient-to-br from-blue-50 via-sky-50 to-indigo-50 ${className}`}>
+      <div className="max-w-4xl mx-auto px-6 py-24 text-center">
         {(icon || iconImage) && (
-          <div className="mb-6">
-            <div className="w-20 h-20 mx-auto mb-4 bg-card border border-border rounded-lg flex items-center justify-center">
+          <div className="mb-8">
+            <div className="w-32 h-32 mx-auto mb-6 bg-white border border-slate-200 rounded-3xl shadow-lg flex items-center justify-center">
               {iconImage ? (
                 <Image
                   src={iconImage}
                   alt={`${name} icon`}
-                  width={64}
-                  height={64}
-                  className="rounded-md"
+                  width={96}
+                  height={96}
+                  className="rounded-2xl"
                 />
               ) : (
-                <span className="text-4xl">{icon}</span>
+                <span className="text-6xl">{icon}</span>
               )}
             </div>
           </div>
         )}
 
-        <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+        <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
           {name}
         </h1>
 
-        <p className="text-lg md:text-xl text-muted-foreground font-medium mb-6">
+        <p className="text-xl md:text-2xl text-slate-600 font-medium mb-8 leading-relaxed">
           {subtitle}
         </p>
 
-        <p className="text-base text-muted-foreground leading-relaxed mb-8 max-w-2xl mx-auto">
+        <p className="text-lg text-slate-600 leading-relaxed mb-12 max-w-2xl mx-auto">
           {description}
         </p>
 

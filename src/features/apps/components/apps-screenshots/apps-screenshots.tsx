@@ -18,18 +18,10 @@ export const AppsScreenshots: React.FC<AppsScreenshotsProps> = ({
   }
 
   return (
-    <section className={`py-16 bg-muted ${className}`}>
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-            {title}
-          </h2>
-          <p className="text-base text-muted-foreground max-w-2xl mx-auto">
-            アプリの主な機能をスクリーンショットでご紹介します
-          </p>
-        </div>
+    <section className={className}>
+      <div className="max-w-5xl mx-auto px-6">
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 justify-items-center">
+        <div className="flex justify-center">
           {screenshots.map((screenshot, index) => (
             <AppsScreenshotCard key={index} screenshot={screenshot} />
           ))}
