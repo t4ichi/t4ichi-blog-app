@@ -21,38 +21,26 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     screenshot: {
-      src: "/images/apps/play-card-app/card-drawing-animation.gif",
-      alt: "カード引きアニメーション",
-      title: "シンプルなカード引き操作",
-      description:
-        "ワンタップでカードを引ける直感的なインターフェース。実際のカードを引く感覚を再現した滑らかなアニメーション",
+      src: "/images/apps/play-card-app/app-demo.mp4",
+      alt: "アプリ操作デモ動画",
+      type: "video" as const,
     },
   },
 };
 
-export const WithHistory: Story = {
-  args: {
-    screenshot: {
-      src: "/images/apps/play-card-app/card-history.png",
-      alt: "引いたカード履歴",
-      title: "引いたカード一覧",
-      description:
-        "これまでに引いたカードの履歴を一覧で確認。順番とカードの種類が一目でわかります",
-    },
-  },
-};
 
 export const WithoutDescription: Story = {
   args: {
     screenshot: {
-      src: "/images/apps/play-card-app/card-drawing-animation.gif",
-      alt: "カード引きアニメーション",
-      title: "シンプルなカード引き操作",
+      src: "/images/apps/play-card-app/app-demo.mp4",
+      alt: "アプリ操作デモ動画",
+      title: "実際のアプリ操作",
+      type: "video" as const,
     },
   },
 };
 
-export const VideoDemo: Story = {
+export const VideoWithDescription: Story = {
   args: {
     screenshot: {
       src: "/images/apps/play-card-app/app-demo.mp4",
@@ -60,7 +48,7 @@ export const VideoDemo: Story = {
       title: "実際のアプリ操作",
       description:
         "カード引きから履歴表示まで、実際のアプリ操作を動画でご確認いただけます",
-      type: "video",
+      type: "video" as const,
     },
   },
 };
