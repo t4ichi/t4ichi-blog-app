@@ -12,18 +12,39 @@ import type { Metadata } from "next";
 // Cloudflare Pages対応設定
 export const runtime = "edge";
 
+const pageUrl = "https://t4ichi.com/apps/play-card-app";
+// TODO: OGイメージは最適なものに差し替える
+const ogImageUrl = "https://t4ichi.com/images/apps/play-card-app/app-icon.png";
+
 export const metadata: Metadata = {
   title: "トランプ引くだけ | パーティーで盛り上がるカード引きアプリ",
   description:
     "ワンタップでトランプを1枚引く、パーティー・飲み会・罰ゲーム決めで活躍するシンプルなアプリ。直感的な操作で誰でもすぐに楽しめます。",
+  keywords: [
+    "カード引き",
+    "パーティーゲーム",
+    "飲み会",
+    "罰ゲーム",
+    "アプリ",
+    "トランプ",
+    "抽選",
+    "決定支援",
+    "シンプル",
+    "簡単操作",
+    "iOSアプリ",
+  ],
+  alternates: {
+    canonical: pageUrl,
+  },
   openGraph: {
     title: "トランプ引くだけ | パーティーで盛り上がるカード引きアプリ",
     description:
       "ワンタップでトランプを1枚引く、パーティー・飲み会・罰ゲーム決めで活躍するシンプルなアプリ。",
+    url: pageUrl,
     type: "website",
     images: [
       {
-        url: "/images/apps/play-card-app/main-screen.png",
+        url: ogImageUrl,
         width: 390,
         height: 844,
         alt: "トランプ引くだけアプリのメイン画面",
@@ -35,23 +56,35 @@ export const metadata: Metadata = {
     title: "トランプ引くだけ | パーティーで盛り上がるカード引きアプリ",
     description:
       "ワンタップでトランプを1枚引く、パーティー・飲み会・罰ゲーム決めで活躍するシンプルなアプリ。",
-    images: ["/images/apps/play-card-app/main-screen.png"],
+    images: [ogImageUrl],
   },
-  keywords: [
-    "カード引き",
-    "パーティーゲーム",
-    "飲み会",
-    "罰ゲーム",
-    "アプリ",
-    "トランプ",
-    "抽選",
-    "決定支援",
-  ],
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "トランプ引くだけ",
+  description:
+    "ワンタップでトランプを1枚引く、パーティー・飲み会・罰ゲーム決めで活躍するシンプルなアプリ。直感的な操作で誰でもすぐに楽しめます。",
+  applicationCategory: "GameApplication",
+  operatingSystem: "iOS",
+  url: pageUrl,
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "JPY",
+  },
+  image: ogImageUrl,
 };
 
 export default function PlayCardAppPage() {
   return (
     <div className="min-h-screen bg-slate-50">
+      <script
+        type="application/ld+json"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: The JSON-LD is generated from static data and is safe.
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* ヒーローセクション */}
       <PlayCardAppHero
         name={PLAY_CARD_APP_INFO.name}
