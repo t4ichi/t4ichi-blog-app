@@ -63,10 +63,7 @@ const FeatureDetailCard: React.FC<FeatureDetailCardProps> = ({ feature }) => {
           {feature.details && feature.details.length > 0 && (
             <ul className="space-y-2">
               {feature.details.map((detail, index) => (
-                <li
-                  key={index}
-                  className="flex items-center text-slate-600"
-                >
+                <li key={index} className="flex items-center text-slate-600">
                   <svg
                     className="w-4 h-4 text-blue-500 mr-3 flex-shrink-0"
                     fill="currentColor"

@@ -20,7 +20,6 @@ export const AppsScreenshots: React.FC<AppsScreenshotsProps> = ({
   return (
     <section className={className}>
       <div className="max-w-5xl mx-auto px-6">
-
         <div className="flex justify-center">
           {screenshots.map((screenshot, index) => (
             <AppsScreenshotCard key={index} screenshot={screenshot} />

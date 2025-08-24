@@ -13,7 +13,7 @@ export type AppInfo = {
 export type AppScreenshot = {
   src: string;
   alt: string;
-  title: string;
+  title?: string;
   description?: string;
   type?: "image" | "video";
 };

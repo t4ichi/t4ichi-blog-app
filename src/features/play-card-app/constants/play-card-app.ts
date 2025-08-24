@@ -14,10 +14,10 @@ export const PLAY_CARD_APP_INFO = {
     {
       src: "/images/apps/play-card-app/app-demo.mp4",
       alt: "アプリ操作デモ動画",
-      type: "video",
+      type: "video" as const,
     },
   ],
-} as const;
+};
 
 export const PLAY_CARD_APP_USE_CASES: PlayCardAppUseCase[] = [
   {

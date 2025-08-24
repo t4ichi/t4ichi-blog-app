@@ -21,7 +21,9 @@ export const AppsHero: React.FC<AppsHeroProps> = ({
   className = "",
 }) => {
   return (
-    <section className={`relative min-h-[600px] bg-gradient-to-br from-blue-50 via-sky-50 to-indigo-50 ${className}`}>
+    <section
+      className={`relative min-h-[600px] bg-gradient-to-br from-blue-50 via-sky-50 to-indigo-50 ${className}`}
+    >
       <div className="max-w-4xl mx-auto px-6 py-24 text-center">
         {(icon || iconImage) && (
           <div className="mb-8">

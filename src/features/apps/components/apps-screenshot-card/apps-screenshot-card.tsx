@@ -23,7 +23,10 @@ export const AppsScreenshotCard: React.FC<AppsScreenshotCardProps> = ({
             className="w-full h-full object-contain"
             aria-label={screenshot.alt}
           >
-            <source src={screenshot.src.replace(".mp4", ".webm")} type="video/webm" />
+            <source
+              src={screenshot.src.replace(".mp4", ".webm")}
+              type="video/webm"
+            />
             <source src={screenshot.src} type="video/mp4" />
             お使いのブラウザは動画をサポートしていません。
           </video>
