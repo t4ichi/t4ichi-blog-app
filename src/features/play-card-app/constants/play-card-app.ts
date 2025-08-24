@@ -29,6 +29,12 @@ export const PLAY_CARD_APP_INFO = {
 
 export const PLAY_CARD_APP_USE_CASES: PlayCardAppUseCase[] = [
   {
+    title: "カードゲーム",
+    description: "ハイローゲームやインディアンポーカーに",
+    icon: JokerColor,
+    examples: ["ハイローゲーム", "インディアンポーカー", "運試し"],
+  },
+  {
     title: "パーティーゲーム",
     description: "友人同士の集まりで順番決めや役割決定に",
     icon: PartyPopperColor,
@@ -39,12 +45,6 @@ export const PLAY_CARD_APP_USE_CASES: PlayCardAppUseCase[] = [
     description: "罰ゲームや余興の抽選に最適",
     icon: BeerMugColor,
     examples: ["罰ゲーム抽選", "乾杯の順番", "一発芸担当決め"],
-  },
-  {
-    title: "カードゲーム",
-    description: "ハイローゲームやインディアンポーカーに",
-    icon: JokerColor,
-    examples: ["ハイローゲーム", "インディアンポーカー", "運試し"],
   },
   {
     title: "決定支援",
@@ -62,7 +62,7 @@ export const PLAY_CARD_APP_FEATURES: PlayCardAppFeature[] = [
     details: ["複雑な設定不要", "誰でもすぐに使える", "スムーズな操作感"],
   },
   {
-    title: "美しいアニメーション",
+    title: "アニメーション",
     description: "リアルなカードフリップアニメーション",
     icon: SparklesColor,
     details: ["滑らかなカード表示", "本物のカードを引く感覚", "視覚的に楽しい"],
