@@ -4,12 +4,12 @@
  * 参考: https://document.microcms.io/image-api/format
  */
 
-export type MicroCMSImageFormat = 'webp' | 'jpg' | 'png' | 'json';
+export type MicroCMSImageFormat = "webp" | "jpg" | "png" | "json";
 
 export type ImageOptimizationOptions = {
   width?: number;
   height?: number;
-  fit?: 'crop' | 'fill' | 'scale' | 'crop-top' | 'crop-bottom';
+  fit?: "crop" | "fill" | "scale" | "crop-top" | "crop-bottom";
   format?: MicroCMSImageFormat;
   quality?: number;
 };
@@ -20,31 +20,31 @@ export type ImageOptimizationOptions = {
  */
 export function optimizeMicroCMSImage(
   url: string,
-  options: ImageOptimizationOptions = {}
+  options: ImageOptimizationOptions = {},
 ): string {
   const {
     width,
     height,
-    fit = 'crop',
-    format = 'webp',
+    fit = "crop",
+    format = "webp",
     quality = 85,
   } = options;
 
   const params = new URLSearchParams();
-  
+
   // サイズ指定
-  if (width) params.set('w', width.toString());
-  if (height) params.set('h', height.toString());
-  
+  if (width) params.set("w", width.toString());
+  if (height) params.set("h", height.toString());
+
   // フィット方法
-  params.set('fit', fit);
-  
+  params.set("fit", fit);
+
   // フォーマット（WebPを優先）
-  params.set('fm', format);
-  
+  params.set("fm", format);
+
   // 品質（WebPの場合は高品質でもファイルサイズが小さい）
-  if (format !== 'json') {
-    params.set('q', quality.toString());
+  if (format !== "json") {
+    params.set("q", quality.toString());
   }
 
   return `${url}?${params.toString()}`;
@@ -56,17 +56,17 @@ export function optimizeMicroCMSImage(
 export function generateSrcSet(
   url: string,
   widths: number[],
-  options: Omit<ImageOptimizationOptions, 'width'> = {}
+  options: Omit<ImageOptimizationOptions, "width"> = {},
 ): string {
   return widths
-    .map(width => {
+    .map((width) => {
       const optimizedUrl = optimizeMicroCMSImage(url, {
         ...options,
         width,
       });
       return `${optimizedUrl} ${width}w`;
     })
-    .join(', ');
+    .join(", ");
 }
 
 /**
@@ -74,22 +74,23 @@ export function generateSrcSet(
  * 古いブラウザ用のフォールバック機能
  */
 export function getOptimalImageFormat(): MicroCMSImageFormat {
-  if (typeof window === 'undefined') {
+  if (typeof window === "undefined") {
     // SSR時はWebPを使用
-    return 'webp';
+    return "webp";
   }
 
   // ブラウザのWebP対応を確認
-  const canvas = document.createElement('canvas');
+  const canvas = document.createElement("canvas");
   canvas.width = 1;
   canvas.height = 1;
-  
+
   try {
     // WebP対応チェック
-    const webpSupported = canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0;
-    return webpSupported ? 'webp' : 'jpg';
+    const webpSupported =
+      canvas.toDataURL("image/webp").indexOf("data:image/webp") === 0;
+    return webpSupported ? "webp" : "jpg";
   } catch {
-    return 'jpg';
+    return "jpg";
   }
 }
 
@@ -98,7 +99,7 @@ export function getOptimalImageFormat(): MicroCMSImageFormat {
  */
 export function getOptimizedImageUrl(
   url: string,
-  options: Omit<ImageOptimizationOptions, 'format'> = {}
+  options: Omit<ImageOptimizationOptions, "format"> = {},
 ): string {
   return optimizeMicroCMSImage(url, {
     ...options,

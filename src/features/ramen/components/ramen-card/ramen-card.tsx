@@ -29,7 +29,10 @@ const formatPrice = (price?: number | null) => {
   return `¥${price.toLocaleString()}`;
 };
 
-export const RamenCard: React.FC<RamenCardProps> = ({ ramen, priority = false }) => {
+export const RamenCard: React.FC<RamenCardProps> = ({
+  ramen,
+  priority = false,
+}) => {
   const visitDate = formatVisitDate(ramen.visitDate);
   const ratingStars = getRatingStars(ramen.rating);
   const formattedPrice = formatPrice(ramen.price);
@@ -44,7 +47,7 @@ export const RamenCard: React.FC<RamenCardProps> = ({ ramen, priority = false })
               src={optimizeMicroCMSImage(ramen.images[0].url, {
                 width: 400,
                 height: 300,
-                format: 'webp',
+                format: "webp",
                 quality: 85,
               })}
               alt={ramen.title}
