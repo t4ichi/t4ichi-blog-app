@@ -4,7 +4,7 @@ import type {
 } from "../types/play-card-app";
 
 export const PLAY_CARD_APP_INFO = {
-  name: "カードを引くだけ",
+  name: "トランプ引くだけ",
   subtitle: "パーティーで盛り上がる！シンプルなカード引きアプリ",
   description:
     "ワンタップでトランプを1枚引く、パーティー・飲み会・罰ゲーム決めで活躍するシンプルなアプリ。",
@@ -12,22 +12,18 @@ export const PLAY_CARD_APP_INFO = {
   appStoreUrl: "https://apps.apple.com/app/card-play",
   screenshots: [
     {
-      src: "/images/apps/play-card-app/main-screen.png",
-      alt: "メイン画面",
-      title: "シンプルなカード引き画面",
-      description: "ワンタップでカードを引ける直感的なインターフェース",
+      src: "/images/apps/play-card-app/card-drawing-animation.gif",
+      alt: "カード引きアニメーション",
+      title: "シンプルなカード引き操作",
+      description:
+        "ワンタップでカードを引ける直感的なインターフェース。実際のカードを引く感覚を再現した滑らかなアニメーション",
     },
     {
-      src: "/images/apps/play-card-app/card-drawn.png",
-      alt: "カード表示画面",
-      title: "引いたカードの表示",
-      description: "美しいアニメーションでカードが表示されます",
-    },
-    {
-      src: "/images/apps/play-card-app/settings.png",
-      alt: "設定画面",
-      title: "カスタマイズ設定",
-      description: "ジョーカーの有無や効果音の設定が可能",
+      src: "/images/apps/play-card-app/card-history.png",
+      alt: "引いたカード履歴",
+      title: "引いたカード一覧",
+      description:
+        "これまでに引いたカードの履歴を一覧で確認。順番とカードの種類が一目でわかります",
     },
   ],
 } as const;

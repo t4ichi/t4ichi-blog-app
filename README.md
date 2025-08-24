@@ -1,4 +1,5 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+s
 
 ## Getting Started
 
@@ -33,7 +34,8 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 This project is automatically deployed to Cloudflare Pages when changes are pushed to the main branch.
 
-### Cloudflare Pages Configuration:
+### Cloudflare Pages Configuration
+
 - Build command: `pnpm build`
 - Build output directory: `.next`
 - Framework preset: Next.js
