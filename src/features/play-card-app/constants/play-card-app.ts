@@ -17,7 +17,7 @@ export const PLAY_CARD_APP_INFO = {
   description:
     "ワンタップでトランプを1枚引く、パーティー・飲み会・罰ゲーム決めで活躍するシンプルなアプリ。",
   // App Store URLは実際のURLに変更してください
-  appStoreUrl: "https://apps.apple.com/app/card-play",
+  appStoreUrl: "https://apps.apple.com/app/id6751434516",
   screenshots: [
     {
       src: "/images/apps/play-card-app/app-demo.mp4",
