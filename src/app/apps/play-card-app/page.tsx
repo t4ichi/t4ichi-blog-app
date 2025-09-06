@@ -12,15 +12,17 @@ import type { Metadata } from "next";
 // Cloudflare Pages対応設定
 export const runtime = "edge";
 
-const pageUrl = "https://t4ichi.com/apps/play-card-app";
+const pageUrl = "https://t4ichi.dev/apps/play-card-app";
 // TODO: OGイメージは最適なものに差し替える
-const ogImageUrl = "https://t4ichi.com/images/apps/play-card-app/app-icon.png";
+const ogImageUrl = "https://t4ichi.dev/images/apps/play-card-app/app-icon.png";
 
 export const metadata: Metadata = {
   title: "トランプ引くだけ | パーティーで盛り上がるカード引きアプリ",
   description:
     "ワンタップでトランプを1枚引く、パーティー・飲み会・罰ゲーム決めで活躍するシンプルなアプリ。直感的な操作で誰でもすぐに楽しめます。",
   keywords: [
+    "カードを引くだけ",
+    "トランプを引くだけ",
     "カード引き",
     "パーティーゲーム",
     "飲み会",
