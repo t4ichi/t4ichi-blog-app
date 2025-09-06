@@ -5,7 +5,7 @@ export const runtime = "edge";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://t4ichi.dev";
-  
+
   return [
     {
       url: baseUrl,

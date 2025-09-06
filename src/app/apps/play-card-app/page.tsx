@@ -1,4 +1,5 @@
-import { AppsScreenshots } from "@/features/apps/components/apps-screenshots";
+import { AppsScreenshotImages } from "@/features/apps/components/apps-screenshot-images";
+import { AppsScreenshotVideo } from "@/features/apps/components/apps-screenshot-video";
 import { PlayCardAppFeatures } from "@/features/play-card-app/components/play-card-app-features";
 import { PlayCardAppHero } from "@/features/play-card-app/components/play-card-app-hero";
 import { PlayCardAppUseCases } from "@/features/play-card-app/components/play-card-app-use-cases";
@@ -14,7 +15,8 @@ export const runtime = "edge";
 
 const pageUrl = "https://t4ichi.dev/apps/play-card-app";
 // TODO: OGイメージは最適なものに差し替える
-const ogImageUrl = "https://t4ichi.dev/images/apps/play-card-app/app-icon.png";
+const ogImageUrl =
+  "https://t4ichi.dev/images/apps/play-card-app/01-before-draw.png";
 
 export const metadata: Metadata = {
   title: "トランプ引くだけ | パーティーで盛り上がるカード引きアプリ",
@@ -49,7 +51,7 @@ export const metadata: Metadata = {
         url: ogImageUrl,
         width: 390,
         height: 844,
-        alt: "トランプ引くだけアプリのメイン画面",
+        alt: "トランプ引くだけアプリのメイン画面 - カード引きゲーム",
       },
     ],
   },
@@ -96,10 +98,17 @@ export default function PlayCardAppPage() {
         appStoreUrl={PLAY_CARD_APP_INFO.appStoreUrl}
       />
 
-      {/* スクリーンショット・動画デモ */}
-      <AppsScreenshots
+      {/* アプリのデモ動画 */}
+      <AppsScreenshotVideo
         screenshots={PLAY_CARD_APP_INFO.screenshots}
-        title="実際のアプリをご覧ください"
+        title=""
+        className="py-20 bg-slate-50"
+      />
+
+      {/* アプリのスクリーンショット */}
+      <AppsScreenshotImages
+        screenshots={PLAY_CARD_APP_INFO.screenshots}
+        title="アプリ画面"
         className="py-20 bg-white"
       />
 
