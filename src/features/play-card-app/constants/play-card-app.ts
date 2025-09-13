@@ -13,9 +13,9 @@ import type {
 
 export const PLAY_CARD_APP_INFO = {
   name: "トランプ引くだけ",
-  subtitle: "パーティーで盛り上がる！シンプルなカード引きアプリ",
+  subtitle: "パーティー・罰ゲーム・決定支援に最適なカード抽選アプリ",
   description:
-    "ワンタップでトランプを1枚引く、パーティー・飲み会・罰ゲーム決めで活躍するシンプルなアプリ。",
+    "ワンタップでトランプを1枚引くシンプルなカード抽選アプリ。履歴機能・美しいアニメーション付きで使いやすさを追求。",
   // App Store URLは実際のURLに変更してください
   appStoreUrl: "https://apps.apple.com/app/id6751434516",
   screenshots: [
@@ -44,28 +44,33 @@ export const PLAY_CARD_APP_INFO = {
 
 export const PLAY_CARD_APP_USE_CASES: PlayCardAppUseCase[] = [
   {
-    title: "カードゲーム",
-    description: "ハイローゲームやインディアンポーカーに",
-    icon: JokerColor,
-    examples: ["ハイローゲーム", "インディアンポーカー", "運試し"],
-  },
-  {
-    title: "パーティーゲーム",
-    description: "友人同士の集まりで順番決めや役割決定に",
+    title: "パーティーゲーム・抽選",
+    description: "友人同士の集まりで順番決めや役割抽選に最適",
     icon: PartyPopperColor,
-    examples: ["順番決め", "チーム分け", "司会者決め"],
+    examples: ["順番決め抽選", "チーム分け", "司会者決め", "カラオケ順番"],
   },
   {
-    title: "飲み会・宴会",
-    description: "罰ゲームや余興の抽選に最適",
+    title: "罰ゲーム・飲み会",
+    description: "罰ゲーム決めや余興の抽選に簡単操作",
     icon: BeerMugColor,
-    examples: ["罰ゲーム抽選", "乾杯の順番", "一発芸担当決め"],
+    examples: ["罰ゲーム抽選", "一発芸担当決め", "おごり決め", "乾杯順番"],
   },
   {
-    title: "決定支援",
-    description: "迷った時の決定支援ツールとして",
+    title: "決定支援ツール",
+    description: "迷った時の決定支援・ランダム選択に",
     icon: ThinkingFaceColor,
-    examples: ["二択の決定", "アイスブレイク", "話のきっかけ"],
+    examples: ["二択の決定", "じゃんけん代わり", "アイスブレイク", "話題作り"],
+  },
+  {
+    title: "ゲーム・エンタメ",
+    description: "カードゲームや運試しゲームに活用",
+    icon: JokerColor,
+    examples: [
+      "ハイローゲーム",
+      "インディアンポーカー",
+      "運試し",
+      "占い風ゲーム",
+    ],
   },
 ];
 
@@ -77,21 +82,21 @@ export const PLAY_CARD_APP_FEATURES: PlayCardAppFeature[] = [
     details: ["複雑な設定不要", "誰でもすぐに使える", "スムーズな操作感"],
   },
   {
-    title: "アニメーション",
-    description: "リアルなカードフリップアニメーション",
+    title: "美しいアニメーション",
+    description: "滑らかなカードフリップ演出",
     icon: SparklesColor,
-    details: ["滑らかなカード表示", "本物のカードを引く感覚", "視覚的に楽しい"],
+    details: ["本物のカードを引く感覚", "視覚的に楽しい", "高品質な表現"],
   },
   {
-    title: "便利な機能",
-    description: "履歴やリセットが可能",
+    title: "便利な履歴機能",
+    description: "引いたカードの履歴確認とリセット機能",
     icon: BarChartColor,
-    details: ["引いたカードの履歴", "ワンタップリセット"],
+    details: ["引いたカード履歴表示", "ワンタップ全リセット", "重複確認可能"],
   },
   {
-    title: "カスタマイズ",
-    description: "ジョーカーの有無や振動の設定",
+    title: "カスタマイズ設定",
+    description: "ジョーカーの有無や振動など細かい設定",
     icon: GearColor,
-    details: ["52枚/54枚デッキ", "バイブレーション設定"],
+    details: ["52枚/54枚デッキ選択", "バイブレーション切替", "個人設定保存"],
   },
 ];
