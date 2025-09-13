@@ -16,6 +16,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## アーキテクチャ概要
 
 ### プロジェクト構成
+
 - **Next.js 15** + **TypeScript** + **Tailwind CSS** を使用したブログアプリケーション
 - **MicroCMS** をヘッドレスCMSとして使用（ラーメンコンテンツ管理）
 - **Orval** を使用してOpenAPI仕様からAPI Client・スキーマを自動生成
@@ -23,6 +24,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Biome** でリント・フォーマット
 
 ### ディレクトリ構造（Bulletproof React準拠）
+
 ```
 src/
 ├── app/          # Next.js App Router（アプリケーション層）
@@ -39,6 +41,7 @@ src/
 ```
 
 ### 機能別モジュール構造
+
 ```
 src/features/feature-name/
 ├── api/          # API リクエスト・hooks
@@ -50,12 +53,14 @@ src/features/feature-name/
 ```
 
 ### API Client生成
+
 - `docs/openapi/openapi.yml` にMicroCMS APIの仕様を定義
 - Orvalで `src/lib/orval/` 配下にfetcher・スキーマを自動生成
 - カスタムfetch実装で認証・レスポンス処理を統一
 - Biomeの除外設定により生成ファイルはlint対象外
 
 ### 設定ファイル
+
 - **Biome設定**: インデント2スペース、ダブルクォート、生成ファイル除外
 - **TypeScript**: `@/*` でsrcディレクトリへのパスエイリアス設定
 - **Orval設定**: operationId変換により `orval` プレフィックス付きの関数名生成
@@ -63,16 +68,19 @@ src/features/feature-name/
 ## コーディング規約
 
 ### ツール設定
+
 - **Linter/Formatter**: Biome推奨ルールに準拠
 - リント・フォーマットは `pnpm check` で実行
 
 ### 命名規則
+
 - **ファイル・ディレクトリ**: ケバブケース (`user-card.tsx`)
 - **コンポーネント・型**: パスカルケース (`UserCard`)
 - **変数・関数**: キャメルケース (`userName`)
 - **定数**: コンスタントケース (`API_URL`)
 
 ### コンポーネント
+
 - UIの型を含める: `UserCard`, `UserSearchForm`
 - Propsは `[Component名]Props` とする
 - `app/` 配下の `page.tsx`, `layout.tsx` のみデフォルトエクスポート
@@ -89,18 +97,21 @@ export const UserCard: React.FC<UserCardProps> = ({ name }) => (
 ```
 
 ### TypeScript
+
 - `interface` ではなく `type` を使用
 - 基本は `const`、再代入時のみ `let`
 - `===` を使用（`== null` のみ許容）
 - 型推論を活用、不要な型記述は避ける
 
 ### 制御構造
+
 - アーリーリターンを使用
 - ネストは3階層以下
 - 配列操作は高階関数 (`map`, `filter`) を使用
 - 繰り返しは `for-of` を使用（`forEach` ではなく）
 
 ### エラーハンドリング
+
 - `try-catch` よりも `Result<T, E>` 型を使用
 - `@/utils/result` のResult型を活用
 - 例外処理よりも戻り値でエラー状態を表現
@@ -117,20 +128,24 @@ const fetchUser = async (id: string): Promise<Result<User, ErrorResponse>> => {
 ```
 
 ### 自動生成コードとの疎結合
+
 - Orval生成のfetcher・スキーマを直接使用せず、ラッパー関数を作成
 - `features/` 配下でビジネスロジックに適した抽象化を実装
 - 生成コードの変更による影響を最小限に抑制
 
 ### 文字コード
+
 - 全ファイルは **UTF-8** で出力・保存
 
 ### アーキテクチャ原則
+
 - **機能駆動**: ほとんどのコードを `features/` フォルダ内で組織化
 - **機能の独立性**: 機能間の相互依存を避ける
 - **単方向コードフロー**: `shared → features → app` の依存関係
 - **必要最小限**: 各機能に必要なサブフォルダのみ作成
 
 ### コンポーネント構造
+
 ```
 # 共有コンポーネント
 src/components/component-name/
@@ -146,15 +161,18 @@ src/features/feature-name/components/component-name/
 ```
 
 ### インポート規則
+
 - 機能間のインポートは **禁止**
 - `shared` → `features` → `app` の順序を厳守
 
 ### ファイル配置ガイドライン
+
 - **共有**: 複数機能で使用するものは `src/components/`, `src/utils/` 等
 - **機能固有**: 特定機能でのみ使用するものは `src/features/[feature-name]/`
 - **アプリケーション**: ルーティング・プロバイダーは `src/app/`
 
 ### テスト設定
+
 - **ユニットテスト**: `*.test.ts`, `*.test.tsx` ファイル
 - **テストランナー**: Vitest + jsdom環境
 - **カバレッジ**: V8プロバイダー、HTML/JSON/テキスト形式で出力
@@ -172,6 +190,7 @@ src/features/feature-name/components/component-name/
 - **実行**: `pnpm test` (監視モード) / `pnpm test:coverage` (カバレッジ)
 
 ### 共有型・スキーマ
+
 - **`src/types/api.ts`**: 全featuresで使用される共通API型
   - `ApiError`: APIエラーレスポンス型（code, message）
   - `Result<T, E>`: 成功/エラーを表現する型
@@ -181,7 +200,9 @@ src/features/feature-name/components/component-name/
   - `resultSchema`: Result型のバリデーション
 
 ### カバレッジ対象の拡張
+
 新しいテスト対象を追加する場合は、`vitest.config.ts`の`coverage.include`に追加：
+
 ```typescript
 include: [
   "src/components/**/*.{ts,tsx}",
@@ -195,3 +216,17 @@ include: [
 ## インポートルール
 
 - 基本的にorvalで生成したものは、**.zod.**か.**fetcher.**ものだけインポートすること
+
+## デザインシステム
+
+### アイコン・絵文字
+
+- **ソース**: [Microsoft Fluent UI Emoji](https://github.com/microsoft/fluentui-emoji)
+- **ツール**: SVGR を使用してReactコンポーネント化
+
+### デザイン参考サイト
+
+- **主要参考**: [catnose.me](https://catnose.me/) - 個人サイトのデザイン
+- **追加参考**:
+  - [Zenn](https://zenn.dev/)
+  - [sizu.me](https://sizu.me/home)
