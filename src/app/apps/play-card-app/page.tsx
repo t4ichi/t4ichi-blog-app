@@ -1,5 +1,7 @@
+import { AppsContactSection } from "@/features/apps/components/apps-contact-section";
 import { AppsScreenshotImages } from "@/features/apps/components/apps-screenshot-images";
 import { AppsScreenshotVideo } from "@/features/apps/components/apps-screenshot-video";
+import { CONTACT_FORMS } from "@/features/apps/constants/contact";
 import { PlayCardAppFeatures } from "@/features/play-card-app/components/play-card-app-features";
 import { PlayCardAppHero } from "@/features/play-card-app/components/play-card-app-hero";
 import { PlayCardAppUseCases } from "@/features/play-card-app/components/play-card-app-use-cases";
@@ -132,6 +134,9 @@ export default function PlayCardAppPage() {
         title="アプリの特徴"
         className="py-20 bg-white"
       />
+
+      {/* お問い合わせセクション */}
+      <AppsContactSection contactUrl={CONTACT_FORMS.PLAY_CARD_APP} />
     </div>
   );
 }
