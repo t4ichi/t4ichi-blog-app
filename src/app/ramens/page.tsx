@@ -14,25 +14,27 @@ export const runtime = "edge";
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
-export const metadata: Metadata = {
-  title: "Ramen | taichi no heya",
-  description: "ラーメン食べ歩き記録。各店舗の記録と写真を掲載しています。",
-  alternates: {
-    canonical: "https://t4ichi.dev/ramens",
-  },
-  openGraph: {
+export async function generateMetadata(): Promise<Metadata> {
+  return {
     title: "Ramen | taichi no heya",
     description: "ラーメン食べ歩き記録。各店舗の記録と写真を掲載しています。",
-    url: "https://t4ichi.dev/ramens",
-    type: "website",
-  },
-  twitter: {
-    card: "summary",
-    title: "Ramen | taichi no heya",
-    description:
-      "ラーメン食べ歩き記録。各店舗の訪問記録と写真を掲載しています。",
-  },
-};
+    alternates: {
+      canonical: "https://t4ichi.dev/ramens",
+    },
+    openGraph: {
+      title: "Ramen | taichi no heya",
+      description: "ラーメン食べ歩き記録。各店舗の記録と写真を掲載しています。",
+      url: "https://t4ichi.dev/ramens",
+      type: "website",
+    },
+    twitter: {
+      card: "summary",
+      title: "Ramen | taichi no heya",
+      description:
+        "ラーメン食べ歩き記録。各店舗の訪問記録と写真を掲載しています。",
+    },
+  };
+}
 
 const searchParamsSchema = z.object({
   q: z.string().optional().catch(undefined), // 検索キーワード
