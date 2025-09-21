@@ -1,8 +1,22 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "プライバシーポリシー",
+  title: "プライバシーポリシー | taichi no heya",
   description: "アプリのプライバシーポリシーに関する情報です。",
+  alternates: {
+    canonical: "https://t4ichi.dev/privacy-policy",
+  },
+  openGraph: {
+    title: "プライバシーポリシー | taichi no heya",
+    description: "アプリのプライバシーポリシーに関する情報です。",
+    url: "https://t4ichi.dev/privacy-policy",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "プライバシーポリシー | taichi no heya",
+    description: "アプリのプライバシーポリシーに関する情報です。",
+  },
 };
 
 const PrivacyPolicyPage = () => {

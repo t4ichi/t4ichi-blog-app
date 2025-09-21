@@ -1,7 +1,30 @@
 import GitHubIcon from "@/icons/github.svg";
 import SteamingBowlColor from "@/icons/steaming_bowl_color.svg";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Ito Taichi | Web Developer",
+  description:
+    "Web developer specializing in modern web technologies. Personal website and portfolio.",
+  alternates: {
+    canonical: "https://t4ichi.dev",
+  },
+  openGraph: {
+    title: "Ito Taichi | Web Developer",
+    description:
+      "Web developer specializing in modern web technologies. Personal website and portfolio.",
+    url: "https://t4ichi.dev",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Ito Taichi | Web Developer",
+    description:
+      "Web developer specializing in modern web technologies. Personal website and portfolio.",
+  },
+};
 
 export default function Home() {
   return (

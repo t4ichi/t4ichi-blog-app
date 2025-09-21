@@ -90,6 +90,24 @@ const jsonLd = {
   image: ogImageUrl,
 };
 
+const videoJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  name: "トランプ引くだけアプリのデモ動画",
+  description:
+    "ワンタップでトランプを1枚引くシンプルなカード抽選アプリの使い方デモ",
+  thumbnailUrl:
+    "https://t4ichi.dev/images/apps/play-card-app/01-before-draw.png",
+  uploadDate: "2024-08-24",
+  duration: "PT30S",
+  contentUrl: "https://t4ichi.dev/images/apps/play-card-app/app-demo.mp4",
+  embedUrl: pageUrl,
+  publisher: {
+    "@type": "Person",
+    name: "Ito Taichi",
+  },
+};
+
 export default function PlayCardAppPage() {
   return (
     <div className="min-h-screen bg-slate-50">
@@ -97,6 +115,11 @@ export default function PlayCardAppPage() {
         type="application/ld+json"
         // biome-ignore lint/security/noDangerouslySetInnerHtml: The JSON-LD is generated from static data and is safe.
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: The JSON-LD is generated from static data and is safe.
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(videoJsonLd) }}
       />
       {/* ヒーローセクション */}
       <PlayCardAppHero

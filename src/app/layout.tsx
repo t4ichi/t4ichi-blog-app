@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  metadataBase: new URL("https://t4ichi-blog-app.pages.dev"),
+  metadataBase: new URL("https://t4ichi.dev"),
 };
 
 export default function RootLayout({
