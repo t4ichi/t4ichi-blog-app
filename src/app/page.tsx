@@ -54,17 +54,30 @@ export default function Home() {
           </section>
 
           {/* Navigation Cards */}
-          <section className="grid grid-cols-2 gap-6 max-w-md mx-auto">
+          <section className="grid grid-cols-3 gap-4 max-w-lg mx-auto">
             {/* Ramen Link */}
             <Link
               href="/ramens"
-              className="group flex flex-col items-center p-6 bg-white border-2 border-gray-100 rounded-2xl hover:border-orange-200 hover:shadow-lg transition-all duration-200"
+              className="group flex flex-col items-center p-4 bg-white border-2 border-gray-100 rounded-2xl hover:border-orange-200 hover:shadow-lg transition-all duration-200"
             >
-              <div className="w-16 h-16 mb-4 flex items-center justify-center bg-orange-50 rounded-full group-hover:bg-orange-100 transition-colors duration-200">
-                <SteamingBowlColor className="w-8 h-8" />
+              <div className="w-12 h-12 mb-3 flex items-center justify-center bg-orange-50 rounded-full group-hover:bg-orange-100 transition-colors duration-200">
+                <SteamingBowlColor className="w-6 h-6" />
               </div>
               <span className="text-sm font-medium text-gray-700 group-hover:text-orange-700">
                 Ramen
+              </span>
+            </Link>
+
+            {/* Play Card App Link */}
+            <Link
+              href="/apps/play-card-app"
+              className="group flex flex-col items-center p-4 bg-white border-2 border-gray-100 rounded-2xl hover:border-blue-200 hover:shadow-lg transition-all duration-200"
+            >
+              <div className="w-12 h-12 mb-3 flex items-center justify-center bg-blue-50 rounded-full group-hover:bg-blue-100 transition-colors duration-200">
+                <span className="text-2xl">🃏</span>
+              </div>
+              <span className="text-sm font-medium text-gray-700 group-hover:text-blue-700">
+                Card App
               </span>
             </Link>
 
@@ -73,10 +86,10 @@ export default function Home() {
               href="https://github.com/t4ichi"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex flex-col items-center p-6 bg-white border-2 border-gray-100 rounded-2xl hover:border-gray-300 hover:shadow-lg transition-all duration-200"
+              className="group flex flex-col items-center p-4 bg-white border-2 border-gray-100 rounded-2xl hover:border-gray-300 hover:shadow-lg transition-all duration-200"
             >
-              <div className="w-16 h-16 mb-4 flex items-center justify-center bg-gray-50 rounded-full group-hover:bg-gray-100 transition-colors duration-200">
-                <GitHubIcon className="w-8 h-8 text-gray-700" />
+              <div className="w-12 h-12 mb-3 flex items-center justify-center bg-gray-50 rounded-full group-hover:bg-gray-100 transition-colors duration-200">
+                <GitHubIcon className="w-6 h-6 text-gray-700" />
               </div>
               <span className="text-sm font-medium text-gray-700 group-hover:text-gray-900">
                 GitHub

@@ -14,17 +14,23 @@ export const runtime = "edge";
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+  searchParams,
+}: RamensPageProps): Promise<Metadata> {
+  // canonical URLは常にクエリパラメータなしのベースURLを指定
+  // これにより重複ページ問題を解決
+  const baseUrl = "https://t4ichi.dev/ramens";
+
   return {
     title: "Ramen | taichi no heya",
     description: "ラーメン食べ歩き記録。各店舗の記録と写真を掲載しています。",
     alternates: {
-      canonical: "https://t4ichi.dev/ramens",
+      canonical: baseUrl,
     },
     openGraph: {
       title: "Ramen | taichi no heya",
       description: "ラーメン食べ歩き記録。各店舗の記録と写真を掲載しています。",
-      url: "https://t4ichi.dev/ramens",
+      url: baseUrl,
       type: "website",
     },
     twitter: {
@@ -32,6 +38,14 @@ export async function generateMetadata(): Promise<Metadata> {
       title: "Ramen | taichi no heya",
       description:
         "ラーメン食べ歩き記録。各店舗の訪問記録と写真を掲載しています。",
+    },
+    robots: {
+      index: true,
+      follow: true,
+      noarchive: false,
+      nosnippet: false,
+      noimageindex: false,
+      nocache: false,
     },
   };
 }

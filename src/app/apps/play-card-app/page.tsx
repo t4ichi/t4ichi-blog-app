@@ -22,36 +22,39 @@ const ogImageUrl =
 
 export const metadata: Metadata = {
   title:
-    "トランプ引くだけ | パーティー・罰ゲーム・決定支援に最適なカード抽選アプリ",
+    "トランプ引くだけ - 無料カード抽選アプリ | パーティーゲーム・罰ゲーム決めに最適",
   description:
-    "ワンタップでトランプを1枚引くシンプルなカード抽選アプリ。パーティー・飲み会・罰ゲーム決め・順番決めに最適。履歴機能付きで美しいアニメーション。iOS/無料アプリ",
+    "【iOS無料】ワンタップでトランプを1枚引くシンプルなカード抽選アプリ。パーティー・飲み会・罰ゲーム決め・順番決めに最適。美しいアニメーションと履歴機能で盛り上がること間違いなし！",
   keywords: [
     "トランプ引くだけ",
-    "カード抽選アプリ",
-    "パーティーゲーム",
-    "罰ゲーム決め",
-    "順番決めアプリ",
-    "飲み会ゲーム",
-    "決定支援ツール",
-    "シンプルトランプ",
-    "カードめくり",
-    "抽選アプリ",
-    "カード引き",
-    "ワンタップ",
-    "履歴機能",
-    "アニメーション",
-    "iOS無料",
-    "パーティー用",
-    "簡単操作",
+    "カード抽選アプリ 無料",
+    "パーティーゲーム iOS",
+    "罰ゲーム決め アプリ",
+    "順番決めアプリ 無料",
+    "飲み会ゲーム おすすめ",
+    "決定支援ツール 簡単",
+    "トランプアプリ シンプル",
+    "カード引きゲーム",
+    "抽選アプリ ワンタップ",
+    "パーティー用ゲーム",
+    "宴会ゲーム 盛り上がる",
+    "合コンゲーム アプリ",
+    "歓送迎会 ゲーム",
+    "新年会 余興",
+    "忘年会 ゲーム",
+    "飲み会 アプリ",
+    "iOS ゲームアプリ",
+    "無料 エンターテイメント",
+    "カジュアルゲーム",
   ],
   alternates: {
     canonical: pageUrl,
   },
   openGraph: {
     title:
-      "トランプ引くだけ | パーティー・罰ゲーム・決定支援に最適なカード抽選アプリ",
+      "トランプ引くだけ - 無料カード抽選アプリ | パーティーゲーム・罰ゲーム決めに最適",
     description:
-      "ワンタップでトランプを1枚引くシンプルなカード抽選アプリ。パーティー・飲み会・罰ゲーム決め・順番決めに最適。履歴機能付き。",
+      "【iOS無料】ワンタップでトランプを1枚引くシンプルなカード抽選アプリ。パーティー・飲み会・罰ゲーム決め・順番決めに最適。美しいアニメーションと履歴機能で盛り上がること間違いなし！",
     url: pageUrl,
     type: "website",
     images: [
@@ -66,9 +69,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "トランプ引くだけ | パーティー・罰ゲーム・決定支援に最適なカード抽選アプリ",
+      "トランプ引くだけ - 無料カード抽選アプリ | パーティーゲーム・罰ゲーム決めに最適",
     description:
-      "ワンタップでトランプを1枚引くシンプルなカード抽選アプリ。パーティー・飲み会・罰ゲーム決め・順番決めに最適。",
+      "【iOS無料】ワンタップでトランプを1枚引くシンプルなカード抽選アプリ。パーティー・飲み会・罰ゲーム決め・順番決めに最適。",
     images: [ogImageUrl],
   },
 };
@@ -82,12 +85,47 @@ const jsonLd = {
   applicationCategory: "GameApplication",
   operatingSystem: "iOS",
   url: pageUrl,
+  downloadUrl: "https://apps.apple.com/jp/app/id6677054711",
+  screenshot: [
+    "https://t4ichi.dev/images/apps/play-card-app/01-before-draw.png",
+    "https://t4ichi.dev/images/apps/play-card-app/02-after-draw.png",
+    "https://t4ichi.dev/images/apps/play-card-app/03-history.png",
+  ],
+  author: {
+    "@type": "Person",
+    name: "Ito Taichi",
+    url: "https://t4ichi.dev",
+  },
+  publisher: {
+    "@type": "Person",
+    name: "Ito Taichi",
+    url: "https://t4ichi.dev",
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "5.0",
+    ratingCount: "1",
+  },
   offers: {
     "@type": "Offer",
     price: "0",
     priceCurrency: "JPY",
+    availability: "https://schema.org/InStock",
   },
   image: ogImageUrl,
+  keywords: [
+    "トランプ",
+    "カード抽選",
+    "パーティーゲーム",
+    "罰ゲーム",
+    "飲み会",
+    "無料アプリ",
+    "iOS",
+  ],
+  datePublished: "2024-08-24",
+  dateModified: new Date().toISOString(),
+  inLanguage: "ja-JP",
+  contentRating: "適切（All Ages）",
 };
 
 const videoJsonLd = {
@@ -108,6 +146,45 @@ const videoJsonLd = {
   },
 };
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "トランプ引くだけアプリは無料ですか？",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "はい、完全無料でご利用いただけます。App Storeから無料でダウンロードできます。",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "どんなシーンで使えますか？",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "パーティー、飲み会、合コン、歓送迎会、忘年会、新年会などでの罰ゲーム決めや順番決めに最適です。",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "使い方は簡単ですか？",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "はい、ワンタップでトランプを1枚引くだけのシンプルな操作です。誰でもすぐに使えます。",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "履歴機能はありますか？",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "はい、引いたカードの履歴を確認できる機能があります。過去に何が出たかを振り返ることができます。",
+      },
+    },
+  ],
+};
+
 export default function PlayCardAppPage() {
   return (
     <div className="min-h-screen bg-slate-50">
@@ -120,6 +197,11 @@ export default function PlayCardAppPage() {
         type="application/ld+json"
         // biome-ignore lint/security/noDangerouslySetInnerHtml: The JSON-LD is generated from static data and is safe.
         dangerouslySetInnerHTML={{ __html: JSON.stringify(videoJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: The JSON-LD is generated from static data and is safe.
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       {/* ヒーローセクション */}
       <PlayCardAppHero
