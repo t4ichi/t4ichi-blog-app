@@ -4,27 +4,36 @@ import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "taichi no heya",
-  description: "Personal website of Ito Taichi. Web developer.",
+  title: {
+    default: "Ito Taichi | Web Developer Portfolio",
+    template: "%s | Ito Taichi",
+  },
+  description:
+    "Web developer specializing in Next.js, TypeScript, and modern web technologies. Portfolio and projects showcase.",
   authors: [{ name: "Ito Taichi" }],
   keywords: [
     "Ito Taichi",
     "Web Developer",
-    "Ramen",
-    "個人サイト",
-    "taichi no heya",
+    "Next.js Developer",
+    "TypeScript",
+    "Frontend Developer",
+    "Portfolio",
+    "Software Engineer",
+    "React Developer",
   ],
   openGraph: {
-    title: "taichi no heya",
-    description: "Personal website of Ito Taichi. Web developer.",
+    title: "Ito Taichi | Web Developer Portfolio",
+    description:
+      "Web developer specializing in Next.js, TypeScript, and modern web technologies.",
     type: "website",
     locale: "ja_JP",
-    siteName: "taichi no heya",
+    siteName: "Ito Taichi Portfolio",
   },
   twitter: {
     card: "summary",
-    title: "taichi no heya",
-    description: "Personal website of Ito Taichi. Web developer.",
+    title: "Ito Taichi | Web Developer Portfolio",
+    description:
+      "Web developer specializing in Next.js, TypeScript, and modern web technologies.",
   },
   robots: {
     index: true,

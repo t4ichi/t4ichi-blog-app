@@ -9,7 +9,6 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: "/ramens?*",
       },
     ],
     sitemap: "https://t4ichi.dev/sitemap.xml",
