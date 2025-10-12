@@ -12,6 +12,7 @@ export const env = createEnv({
     MICROCMS_SERVICE_DOMAIN: z
       .string()
       .min(1, "MicroCMS サービスドメインが設定されていません"),
+    SITE_URL: z.string().url().default("https://t4ichi.dev"),
   },
 
   /**
@@ -29,6 +30,7 @@ export const env = createEnv({
   runtimeEnv: {
     MICROCMS_API_KEY: process.env.MICROCMS_API_KEY,
     MICROCMS_SERVICE_DOMAIN: process.env.MICROCMS_SERVICE_DOMAIN,
+    SITE_URL: process.env.SITE_URL,
   },
 
   /**

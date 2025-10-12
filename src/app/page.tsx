@@ -1,21 +1,24 @@
+import { env } from "@/config/env";
 import GitHubIcon from "@/icons/github.svg";
 import SteamingBowlColor from "@/icons/steaming_bowl_color.svg";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
+const baseUrl = env.SITE_URL;
+
 export const metadata: Metadata = {
   title: "Ito Taichi | Web Developer",
   description:
     "Web developer specializing in modern web technologies. Personal website and portfolio.",
   alternates: {
-    canonical: "https://t4ichi.dev",
+    canonical: baseUrl,
   },
   openGraph: {
     title: "Ito Taichi | Web Developer",
     description:
       "Web developer specializing in modern web technologies. Personal website and portfolio.",
-    url: "https://t4ichi.dev",
+    url: baseUrl,
     type: "website",
   },
   twitter: {

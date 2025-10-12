@@ -1,15 +1,18 @@
+import { env } from "@/config/env";
 import type { Metadata } from "next";
+
+const baseUrl = env.SITE_URL;
 
 export const metadata: Metadata = {
   title: "プライバシーポリシー | taichi no heya",
   description: "アプリのプライバシーポリシーに関する情報です。",
   alternates: {
-    canonical: "https://t4ichi.dev/privacy-policy",
+    canonical: `${baseUrl}/privacy-policy`,
   },
   openGraph: {
     title: "プライバシーポリシー | taichi no heya",
     description: "アプリのプライバシーポリシーに関する情報です。",
-    url: "https://t4ichi.dev/privacy-policy",
+    url: `${baseUrl}/privacy-policy`,
     type: "website",
   },
   twitter: {

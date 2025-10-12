@@ -1,10 +1,11 @@
+import { env } from "@/config/env";
 import type { MetadataRoute } from "next";
 
 // Cloudflare Pages対応設定
 export const runtime = "edge";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://t4ichi.dev";
+  const baseUrl = env.SITE_URL;
 
   return [
     {

@@ -1,3 +1,4 @@
+import { env } from "@/config/env";
 import type { MetadataRoute } from "next";
 
 // Cloudflare Pages対応設定
@@ -11,6 +12,6 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
       },
     ],
-    sitemap: "https://t4ichi.dev/sitemap.xml",
+    sitemap: `${env.SITE_URL}/sitemap.xml`,
   };
 }

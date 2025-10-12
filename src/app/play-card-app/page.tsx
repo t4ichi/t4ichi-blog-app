@@ -1,3 +1,4 @@
+import { env } from "@/config/env";
 import { AppsContactSection } from "@/features/apps/components/apps-contact-section";
 import { AppsScreenshotImages } from "@/features/apps/components/apps-screenshot-images";
 import { AppsScreenshotVideo } from "@/features/apps/components/apps-screenshot-video";
@@ -15,10 +16,10 @@ import type { Metadata } from "next";
 // Cloudflare Pages対応設定
 export const runtime = "edge";
 
-const pageUrl = "https://t4ichi.dev/play-card-app";
+const baseUrl = env.SITE_URL;
+const pageUrl = `${baseUrl}/play-card-app`;
 // TODO: OGイメージは最適なものに差し替える
-const ogImageUrl =
-  "https://t4ichi.dev/images/apps/play-card-app/01-before-draw.png";
+const ogImageUrl = `${baseUrl}/images/apps/play-card-app/01-before-draw.png`;
 
 export const metadata: Metadata = {
   title:
@@ -87,19 +88,19 @@ const jsonLd = {
   url: pageUrl,
   downloadUrl: "https://apps.apple.com/jp/app/id6677054711",
   screenshot: [
-    "https://t4ichi.dev/images/apps/play-card-app/01-before-draw.png",
-    "https://t4ichi.dev/images/apps/play-card-app/02-after-draw.png",
-    "https://t4ichi.dev/images/apps/play-card-app/03-history.png",
+    `${baseUrl}/images/apps/play-card-app/01-before-draw.png`,
+    `${baseUrl}/images/apps/play-card-app/02-after-draw.png`,
+    `${baseUrl}/images/apps/play-card-app/03-history.png`,
   ],
   author: {
     "@type": "Person",
     name: "Ito Taichi",
-    url: "https://t4ichi.dev",
+    url: baseUrl,
   },
   publisher: {
     "@type": "Person",
     name: "Ito Taichi",
-    url: "https://t4ichi.dev",
+    url: baseUrl,
   },
   aggregateRating: {
     "@type": "AggregateRating",
@@ -134,11 +135,10 @@ const videoJsonLd = {
   name: "トランプ引くだけアプリのデモ動画",
   description:
     "ワンタップでトランプを1枚引くシンプルなカード抽選アプリの使い方デモ",
-  thumbnailUrl:
-    "https://t4ichi.dev/images/apps/play-card-app/01-before-draw.png",
+  thumbnailUrl: `${baseUrl}/images/apps/play-card-app/01-before-draw.png`,
   uploadDate: "2024-08-24",
   duration: "PT30S",
-  contentUrl: "https://t4ichi.dev/images/apps/play-card-app/app-demo.mp4",
+  contentUrl: `${baseUrl}/images/apps/play-card-app/app-demo.mp4`,
   embedUrl: pageUrl,
   publisher: {
     "@type": "Person",

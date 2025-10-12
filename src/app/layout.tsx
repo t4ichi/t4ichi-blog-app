@@ -1,3 +1,4 @@
+import { env } from "@/config/env";
 import { SiteFooter } from "@/features/site/components/site-footer";
 import type { Metadata } from "next";
 import Script from "next/script";
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  metadataBase: new URL("https://t4ichi.dev"),
+  metadataBase: new URL(env.SITE_URL),
 };
 
 export default function RootLayout({
