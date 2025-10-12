@@ -14,7 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${baseUrl}/apps/play-card-app`,
+      url: `${baseUrl}/play-card-app`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
