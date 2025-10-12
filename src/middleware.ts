@@ -11,19 +11,9 @@ export function middleware(request: NextRequest) {
     );
   }
 
-  // /apps へのアクセスを apps.t4ichi.dev にリダイレクト
-  // /apps/play-card-app → /play-card-app
-  if (pathname.startsWith("/apps")) {
-    const newPath = pathname.replace("/apps", "");
-    return NextResponse.redirect(
-      new URL(`${newPath}${search}`, "https://apps.t4ichi.dev"),
-      { status: 301 },
-    );
-  }
-
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/ramens/:path*", "/apps/:path*"],
+  matcher: ["/ramens/:path*"],
 };

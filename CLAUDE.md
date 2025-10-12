@@ -2,6 +2,15 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## プロジェクト概要
+
+このプロジェクトは **ポートフォリオサイト専用** です。
+- **サブドメイン分離済み** (2025-10-11):
+  - `t4ichi.dev` - ポートフォリオ (このプロジェクト)
+  - `ramens.t4ichi.dev` - ラーメンサイト (別リポジトリ: t4ichi-ramens)
+  - `apps.t4ichi.dev` - アプリLP (別リポジトリ: t4ichi-apps)
+- **301リダイレクト実装済み**: `src/middleware.ts` で `/ramens/*` と `/apps/*` を各サブドメインにリダイレクト
+
 ## 開発コマンド
 
 - `pnpm dev` - 開発サーバーを起動
