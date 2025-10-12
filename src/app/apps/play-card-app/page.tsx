@@ -15,10 +15,10 @@ import type { Metadata } from "next";
 // Cloudflare Pages対応設定
 export const runtime = "edge";
 
-const pageUrl = "https://apps.t4ichi.dev/play-card-app";
+const pageUrl = "https://t4ichi.dev/apps/play-card-app";
 // TODO: OGイメージは最適なものに差し替える
 const ogImageUrl =
-  "https://apps.t4ichi.dev/images/apps/play-card-app/01-before-draw.png";
+  "https://t4ichi.dev/images/apps/play-card-app/01-before-draw.png";
 
 export const metadata: Metadata = {
   title:
