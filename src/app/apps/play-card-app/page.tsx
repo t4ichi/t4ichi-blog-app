@@ -17,7 +17,7 @@ import type { Metadata } from "next";
 export const runtime = "edge";
 
 const baseUrl = env.SITE_URL;
-const pageUrl = `${baseUrl}/play-card-app`;
+const pageUrl = `${baseUrl}/apps/play-card-app`;
 // TODO: OGイメージは最適なものに差し替える
 const ogImageUrl = `${baseUrl}/images/apps/play-card-app/01-before-draw.png`;
 

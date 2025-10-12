@@ -73,7 +73,7 @@ export default function Home() {
 
             {/* Play Card App Link */}
             <Link
-              href="/play-card-app"
+              href="/apps/play-card-app"
               className="group flex flex-col items-center p-4 bg-white border-2 border-gray-100 rounded-2xl hover:border-blue-200 hover:shadow-lg transition-all duration-200"
             >
               <div className="w-12 h-12 mb-3 flex items-center justify-center bg-blue-50 rounded-full group-hover:bg-blue-100 transition-colors duration-200">
