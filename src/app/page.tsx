@@ -59,8 +59,10 @@ export default function Home() {
           {/* Navigation Cards */}
           <section className="grid grid-cols-3 gap-4 max-w-lg mx-auto">
             {/* Ramen Link */}
-            <Link
-              href="/ramens"
+            <a
+              href="https://ramens.t4ichi.dev"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group flex flex-col items-center p-4 bg-white border-2 border-gray-100 rounded-2xl hover:border-orange-200 hover:shadow-lg transition-all duration-200"
             >
               <div className="w-12 h-12 mb-3 flex items-center justify-center bg-orange-50 rounded-full group-hover:bg-orange-100 transition-colors duration-200">
@@ -69,7 +71,7 @@ export default function Home() {
               <span className="text-sm font-medium text-gray-700 group-hover:text-orange-700">
                 Ramen
               </span>
-            </Link>
+            </a>
 
             {/* Play Card App Link */}
             <Link
