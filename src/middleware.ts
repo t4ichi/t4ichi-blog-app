@@ -11,9 +11,18 @@ export function middleware(request: NextRequest) {
     );
   }
 
+  // /apps/play-card-app へのアクセスを play-card-app.t4ichi.dev にリダイレクト
+  if (pathname.startsWith("/apps/play-card-app")) {
+    const newPath = pathname.replace("/apps/play-card-app", "");
+    return NextResponse.redirect(
+      new URL(`${newPath}${search}`, "https://play-card-app.t4ichi.dev"),
+      { status: 301 },
+    );
+  }
+
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/ramens/:path*"],
+  matcher: ["/ramens/:path*", "/apps/play-card-app/:path*"],
 };

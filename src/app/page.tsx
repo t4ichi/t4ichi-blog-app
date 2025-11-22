@@ -3,7 +3,6 @@ import GitHubIcon from "@/icons/github.svg";
 import SteamingBowlColor from "@/icons/steaming_bowl_color.svg";
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 
 const baseUrl = env.SITE_URL;
 
@@ -74,8 +73,10 @@ export default function Home() {
             </a>
 
             {/* Play Card App Link */}
-            <Link
-              href="/apps/play-card-app"
+            <a
+              href="https://play-card-app.t4ichi.dev"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group flex flex-col items-center p-4 bg-white border-2 border-gray-100 rounded-2xl hover:border-blue-200 hover:shadow-lg transition-all duration-200"
             >
               <div className="w-12 h-12 mb-3 flex items-center justify-center bg-blue-50 rounded-full group-hover:bg-blue-100 transition-colors duration-200">
@@ -84,7 +85,7 @@ export default function Home() {
               <span className="text-sm font-medium text-gray-700 group-hover:text-blue-700">
                 Card App
               </span>
-            </Link>
+            </a>
 
             {/* GitHub Link */}
             <a
